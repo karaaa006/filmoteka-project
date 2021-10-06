@@ -1,0 +1,28 @@
+{
+  "name": "filmoteka-project",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://karaaa006.github.io/filmoteka-project",
+  "scripts": {
+    "dev": "parcel src/*.html",
+    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karaaa006/filmoteka-project.git"
+  },
+  "keywords": [],
+  "author": "Lorem-Ipsum Team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5",
+    "parcel-plugin-handlebars-precompile": "^1.0.2",
+    "parcel-plugin-nuke-dist": "^1.0.1",
+    "posthtml-include": "^1.6.2",
+    "sass": "^1.32.8"
+  }
+}
