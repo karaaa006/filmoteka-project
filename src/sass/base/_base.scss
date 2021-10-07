@@ -1,0 +1,23 @@
+body {
+  font-family: $main-font;
+  font-size: 12px;
+  line-height: 1.33;
+  color: $text-cl;
+  background-color: $page-bg-cl;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
