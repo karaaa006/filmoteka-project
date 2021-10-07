@@ -1,1 +1,0 @@
-{"version":3,"sources":["index.js","other_pages/index_import.js"],"names":[],"mappings":";;;AAAA,aAAA,QAAA;;ACAA,aAAA,QAAA","file":"index_import.c4a25f77.js","sourceRoot":"../src","sourcesContent":["import './sass/main.scss';\n","import '../index';\n"]}
