@@ -3,4 +3,4 @@ parcelRequire=function(e,r,t,n){var i,o="function"==typeof parcelRequire&&parcel
 },{"./../images/demo.jpg":[["demo.090c7c6d.jpg","nKR3"],"nKR3"]}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");const e="c4da2d26df740b651b6bb4b7cba32696";fetch(`https://api.themoviedb.org/3/search/movie?api_key=${e}&language=uk-UK&page=1&include_adult=false&query=dog`).then(e=>e.json()).then(e=>console.log(e));
 },{"./sass/main.scss":"clu1"}]},{},["Focm"], null)
-//# sourceMappingURL=/parcel-project-template/src.045be9bc.js.map
+//# sourceMappingURL=/filmoteka-project/src.a94a520f.js.map
