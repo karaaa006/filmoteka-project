@@ -1,10 +1,60 @@
 .header {
   background-color: #000;
+  padding-top: 41px;
+  padding-bottom: 65px;
+}
+
+.header-main {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  @include for-tablet {
+    padding-left: 51px;
+    padding-right: 51px;
+  }
+}
+
+.header-logo {
+  display: flex;
+  align-items: flex-end;
+  outline: 1px solid tomato;
+}
+
+.logo-text {
+  @include from-none-to-tablet {
+    display: none;
+  }
+  @include for-tablet {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: $page-bg-cl;
+  }
+}
+
+.navigation-list {
+  display: flex;
+}
+
+.navigation-list-item:not(:first-child) {
+  margin-left: 39px;
+}
+.navigation-list-item__link {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: $page-bg-cl;
+  text-transform: uppercase;
 }
 
 .control-buttons {
   display: flex;
   justify-content: center;
+  margin-top: 45px;
 }
 
 .control-buttons__item {

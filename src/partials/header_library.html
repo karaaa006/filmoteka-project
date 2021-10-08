@@ -1,22 +1,24 @@
-<h2>Header library</h2>
+<h2 class="visually-hidden">Header library</h2>
 <header class="header container">
-    <a href="">
-        <!-- <svg class="" width="" height="">
-            <use href=""></use>
-        </svg> -->
-        <span>Filmoteka</span>
-    </a>
-    <nav>
-        <ul>
-            <li>
-                <a href="">Home</a>
-            </li>
-            <li>
-                <a href="">My lybrary</a>
-            </li>
-        </ul>
-    </nav>
-    <ul class="control-buttons">
+    <div class="header-main">
+        <a href="" class="header-logo link">
+            <svg class="" width="24" height="24" class="logo-image">
+                    <use href=""></use>
+                </svg>
+            <span class="logo-text">Filmoteka</span>
+        </a>
+        <nav class="navigation">
+            <ul class="navigation-list list">
+                <li class="navigation-list-item">
+                    <a href="" class="navigation-list-item__link link">Home</a>
+                </li>
+                <li class="navigation-list-item">
+                    <a href="" class="navigation-list-item__link link">My library</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <ul class="control-buttons list">
         <li class="control-buttons__item">
             <button type="button" class="button active" id="watched">Watched</button>
         </li>
