@@ -71,4 +71,4 @@ module.exports=require("./lib/axios");
 },{"./genres":"pQa5"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=s(require("./js/movie_Api")),o=s(require("./js/genres_decoder"));function s(e){return e&&e.__esModule?e:{default:e}}console.log("Преобразование ID жанров в их название: ",(0,o.default)([10759,9648,18]));const n=new e.default;n.searchMovies("Smith").then(e=>console.log("Поиск фильмов по запросу: ",e)),n.getPopularMovies().then(e=>console.log("Популярные фильмы: ",e)),n.getMovieInfo("122").then(e=>console.log("Информация о фильме по ID: ",e)),n.getUpcomingMovies().then(e=>console.log("Скоро в кино: ",e));
 },{"./sass/main.scss":"clu1","./js/movie_Api":"ccOE","./js/genres_decoder":"i1JI"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka-project/src.b1c88617.js.map
+//# sourceMappingURL=/filmoteka-project/src.f5b12cc2.js.map
