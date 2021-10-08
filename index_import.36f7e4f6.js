@@ -73,4 +73,4 @@ module.exports=require("./lib/axios");
 },{"./sass/main.scss":"clu1","./js/movie_Api":"ccOE","./js/genres_decoder":"i1JI"}],"Smc8":[function(require,module,exports) {
 "use strict";require("../index");
 },{"../index":"Focm"}]},{},["Smc8"], null)
-//# sourceMappingURL=/filmoteka-project/index_import.6fdca77c.js.map
+//# sourceMappingURL=/filmoteka-project/index_import.36f7e4f6.js.map
