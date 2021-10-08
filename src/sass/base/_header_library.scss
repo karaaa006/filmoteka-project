@@ -1,0 +1,46 @@
+.header {
+  background-color: #000;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.control-buttons__item {
+  list-style: none;
+}
+
+.control-buttons__item:not(:first-child) {
+  @include from-none-to-tablet {
+    margin-left: 20px;
+  }
+  @include for-tablet {
+    margin-left: 15px;
+  }
+}
+
+.button {
+  color: $page-bg-cl;
+  text-transform: uppercase;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid $page-bg-cl;
+  height: 44px;
+  @include from-none-to-tablet {
+    width: 129px;
+  }
+  @include for-tablet {
+    width: 135px;
+  }
+}
+
+.button.active {
+  background-color: $accent-cl;
+  border-color: $accent-cl;
+}
