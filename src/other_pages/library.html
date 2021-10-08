@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filmoteka - Home</title>
-    <link rel="shortcut icon" href="./images/logo.svg" type="image/svg" />
+    <title>Filmoteka - My Library</title>
+    <link rel="shortcut icon" href="../images/logo.svg" type="image/svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -20,13 +20,11 @@
   </head>
   <body>
     <!-- Так добавляются фрагменты в главные HTML-файлы страниц. -->
-    <a href="./other_pages/library.html">My library</a>
-    <include src="./partials/header_home.html"></include>
+    <a href="/">Home</a>
+    <include src="./partials/header_library.html"></include>
     <include src="./partials/movie_list.html"></include>
     <include src="./partials/footer.html"></include>
-    <include src="./partials/film-card_modal.html"></include>
 
-    <!-- Скрипт идёт последним в разметке. В нём уже подключен главный SASS-файл. -->
-    <script src="./index.js"></script>
+    <script src="./index_import.js"></script>
   </body>
 </html>

@@ -1,0 +1,24 @@
+// Отступы между карточками
+$card-magrin: 30px;
+
+// брейкпоинты для экранов
+$phone-sz: 480px;
+$from-phone-to-tablet: 767px;
+$tablet-sz: 768px;
+$desktop-sz: 1200px;
+
+// Шрифты
+$main-font: 'Roboto', sans-serif;
+
+// Цвета
+$page-bg-cl: #ffffff;
+$text-cl: #000000;
+$accent-cl: #ff6b01;
+$secondary-bg-cl: #f7f7f7; //footer + стрелки в пагинации
+$footer-text-cl: #545454;
+$modal-backdrop-cl: rgba(0, 0, 0, 0.25);
+$header-transparent-cl: rgba(0, 0, 0, 0.56);
+$error-text-cl: #ff001b;
+
+// Переход
+$transition-style: 250ms cubic-bezier(0.4, 0, 0.2, 1);
