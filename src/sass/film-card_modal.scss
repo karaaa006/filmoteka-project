@@ -1,0 +1,231 @@
+
+
+//додав загальні стилі, потрібно їх перенести в файл common.scss
+// також всюди прописав шрифт та властивості, їх теж потрібно в змінні винести
+// загальні стилі кнопок теж потрібно винести і чотири кольори, чорний, білий, #8C8C8C, #FF6B01
+//  також потрібні точки перелому і змінні винести
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+ 
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+} 
+ 
+ .backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    opacity: 1;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5));
+    overflow: auto;
+    overflow-y: scroll;
+  }
+  
+
+
+  .modal {
+    @media screen and (min-width: 550px) {
+     width: 280px;
+    }
+    
+    @media screen and (min-width: 768px) {
+      display: flex;
+      width: auto;
+      flex-wrap: nowrap;
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%);
+  
+    padding: 20px;
+    padding-top: 50px;
+    padding-bottom: 40px;
+         
+    background-color: white;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, .12), 0px 1px 1px rgba(0, 0, 0, .14), 0px 2px 1px rgba(0, 0, 0, .2);
+    border-radius: 4px; 
+  }
+
+  .modal__close-btn {
+    
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+  
+    padding: 0;  
+  
+    background-color: inherit;
+    border-style: none;  
+    
+    &:hover .modal__close-icon,
+    &:focus .modal__close-icon {
+      fill: #FF6B01;
+    }
+   
+  }
+
+
+  .modal_thumb {
+    margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
+      margin-right: 30px;
+      
+    }      
+    
+  }
+
+  .film-poster{
+    @media screen and (min-width: 1024px) {
+      width: 396px;   
+      
+    }
+  }
+
+  .film-card_text-content {
+    @media screen and (min-width: 768px) {
+      
+      width: 264px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 396px;
+      
+      
+    }
+  }
+
+  .film-name {
+    margin-top: 0;
+    margin-bottom: 20px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.15;
+    text-transform: uppercase;
+
+    @media screen and (min-width: 1024px) {
+      font-size: 30px;      
+    }
+
+  }
+
+  .meta-info_container{
+    margin-bottom: 20px;
+  }
+
+  .meta-info_container {
+    display: flex;
+    flex-wrap: nowrap; 
+
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 12px;    
+    line-height: 1.33;
+  }
+
+
+  .meta-info_item:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .meta-info_list{
+    margin-right: 40px;
+    color: #8C8C8C;
+  }
+
+  .meta-info_item-content:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  .film-name_item {
+    text-transform: uppercase;
+  }
+
+  .evg-vote_item {
+    color: white;
+    
+    border-radius: 5px;
+    padding: 1px 10px;
+    background-color: #FF6B01;
+  }
+
+  .total-vote_item {
+   color: black;
+    
+   border-radius: 5px;
+   padding: 1px 10px;
+   background-color: F7F7F7;
+ }
+
+ .about-title {
+   margin-top: 0;
+   margin-bottom: 10px;
+   text-transform: uppercase;
+
+   font-family: Roboto;
+   font-style: normal;
+   font-weight: 500;
+   font-size: 12px;
+   line-height: 1.33;
+ }
+
+  .about-content {
+    margin-bottom: 20px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.66;
+  }
+
+  .btn-container {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .modal-btn:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  .modal-btn {
+    padding: 13px 8px;
+
+    text-transform: uppercase;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+
+    background-color: inherit;
+    border-style: 1px solid black;
+    border-radius: 5px;
+}
+
+  .watched_btn {
+    background-color: #FF6B01;
+    border-style: none;
+    color: #FFFFFF;
+  }
