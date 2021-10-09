@@ -59,17 +59,24 @@
   text-transform: uppercase;
   font-weight: 500;
 }
+
 .card__info {
   color: $accent-cl;
   display: flex;
   align-items: center;
 }
 
+.genres-list {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .movie-rating {
   margin-left: 10px;
-
+  padding: 1px 0;
   width: 36px;
-  height: 16px;
   border-radius: 5px;
   text-align: center;
 

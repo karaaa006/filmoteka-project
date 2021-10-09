@@ -1,8 +1,8 @@
 {{#each this}}
 <li class="movie-list__card">
 <div class="card-img__thumb">
-  <img class="movie-img" loading="lazy" srcset="https://image.tmdb.org/t/p/w342/{{poster_path}} 1x, https://image.tmdb.org/t/p/w780/{{poster_path}} 2x" 
-  src="https://image.tmdb.org/t/p/w342/{{poster_path}}" alt="{{#if title}} {{title}} {{else}} {{name}} {{/if}}">
+  <img class="movie-img" loading="lazy" srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 1x, https://image.tmdb.org/t/p/w780{{poster_path}} 2x" 
+  src="https://image.tmdb.org/t/p/w342{{poster_path}}" alt="{{#if title}} {{title}} {{else}} {{name}} {{/if}}">
 </div>
 <div class="card__content">
   {{#if title}}
@@ -10,7 +10,8 @@
   {{else}}
   <h3 class="card__title">{{name}}</h3>
   {{/if}}
-  <p class="card__info">{{genre_ids}}
+  <p class="card__info">
+    <span class="genres-list" title="{{genre_ids}}">{{genre_ids}}</span>
     <span class="line"></span>
     {{#if release_date}}
     <span class="movie-date">{{release_date}}</span>

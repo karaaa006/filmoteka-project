@@ -34,9 +34,13 @@
   padding-right: 15px;
 
   @include for-tablet {
-    max-width: 648px;
+    max-width: $tablet-sz;
+    padding-left: 75px;
+    padding-right: 75px;
   }
   @include for-desktop {
-    max-width: 912px;
+    max-width: $desktop-sz;
+    padding-left: 71px;
+    padding-right: 71px;
   }
 }
