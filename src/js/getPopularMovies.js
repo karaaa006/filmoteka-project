@@ -8,17 +8,27 @@ import template from '../templates/film-card-li.hbs';
 
 const movieApi = new FetchApi();
 
+ function pad(value)  {
+    return String(value).padEnd(3, '.0');
+  }
 
 movieApi.getPopularMovies().then(d => {
+
   const modifiedData = d.results.map(m => {
     m.genre_ids = genres_decoder(m.genre_ids);
+
+    if (m.genre_ids.length > 3) {
+      m.genre_ids = m.genre_ids.slice(0, 3);
+        
+    }
     m.genre_ids = m.genre_ids.join(", ");
-    if (m.release_date !== undefined) {m.release_date = m.release_date.slice(0, 4)}
-    else{m.first_air_date = m.first_air_date.slice(0, 4)}
+    if (m.release_date !== undefined) { m.release_date = m.release_date.slice(0, 4) }
+    else { m.first_air_date = m.first_air_date.slice(0, 4) }
+    m.vote_average = pad(m.vote_average)
     return m;
-  })
+  });
   
-  renderMovieMarkup(template, modifiedData)
+  renderMovieMarkup(template, modifiedData);
 });
   
   
