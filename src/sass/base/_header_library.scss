@@ -41,7 +41,7 @@
 .navigation-list-item:not(:first-child) {
   margin-left: 39px;
 }
-.navigation-list-item__link {
+.navigation-list-item__button {
   font-family: Roboto;
   font-style: normal;
   font-weight: 500;
@@ -49,6 +49,8 @@
   line-height: 14px;
   color: $page-bg-cl;
   text-transform: uppercase;
+  border: none;
+  background-color: transparent;
 }
 
 .control-buttons {
@@ -93,4 +95,12 @@
 .button.active {
   background-color: $accent-cl;
   border-color: $accent-cl;
+}
+
+.navigation-list-item__button.active::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: $accent-cl;
 }
