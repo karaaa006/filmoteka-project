@@ -81,4 +81,4 @@ var e,t=arguments[3];!function(t,r){"object"==typeof exports&&"object"==typeof m
 },{"./movie_Api.js":"ccOE","./genres_decoder":"i1JI","./renderMovieMarkup.js":"OA5M","../templates/film-card-li.hbs":"cRF3"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss");var e=n(require("./js/movie_Api")),o=n(require("./js/genres_decoder")),s=n(require("./js/getPopularMovies.js"));function n(e){return e&&e.__esModule?e:{default:e}}console.log("Преобразование ID жанров в их название: ",(0,o.default)([10759,9648,18]));const r=new e.default;r.searchMovies("INJUSTICE").then(e=>console.log("Поиск фильмов по запросу: ",e)),r.getPopularMovies().then(e=>console.log("Популярные фильмы: ",e)),r.getMovieInfo("122").then(e=>console.log("Информация о фильме по ID: ",e)),r.getUpcomingMovies().then(e=>console.log("Скоро в кино: ",e));
 },{"./sass/main.scss":"clu1","./js/movie_Api":"ccOE","./js/genres_decoder":"i1JI","./js/getPopularMovies.js":"cCjI"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka-project/src.0055e853.js.map
+//# sourceMappingURL=/filmoteka-project/src.2a67b421.js.map
