@@ -6,6 +6,7 @@
   background-size: cover;
   padding-top: 41px;
   padding-bottom: 61px;
+  margin-bottom: 60px;
 
   @include from-none-to-tablet {
     background-image: url(../images/header_home_bg_tablet.jpg);
@@ -23,6 +24,7 @@
   background-size: cover;
   padding-top: 41px;
   padding-bottom: 65px;
+  margin-bottom: 60px;
 
   @include from-none-to-tablet {
     background-image: url(../images/header_library_bg_tablet.jpg);
@@ -143,20 +145,20 @@
   border-left: none;
   border-right: none;
   border-bottom: 0.5px solid #ffffff;
+  color: #ffffff;
 
   @include for-tablet {
     width: 336px;
   }
-}
 
-::placeholder {
-  font-family: Roboto;
-  font-size: 14px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
+  &::placeholder {
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
 
-  color: #ffffff;
+    color: #ffffff;
+  }
 }
 
 .search-svg {
