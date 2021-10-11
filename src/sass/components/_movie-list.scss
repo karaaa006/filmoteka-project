@@ -1,3 +1,6 @@
+.movie-list__container {
+  margin-bottom: 60px;
+}
 .movie-list {
   display: flex;
   flex-wrap: wrap;
@@ -11,6 +14,8 @@
   margin-bottom: 20px;
   max-width: 298px;
   height: 100%;
+
+  cursor: pointer;
 
   @media screen and (min-width: 768px) {
     flex-basis: calc((100% - 30px) / 2);
@@ -33,12 +38,24 @@
       margin-bottom: 0;
     }
   }
+
+  &:hover .movie-img,
+  &:focus .movie-img {
+    filter: grayscale(1);
+
+    transform: scale(1.2) rotateZ(5deg);
+  }
 }
 
 .card-img__thumb {
+  max-height: 400px;
   margin-bottom: 10px;
   border-radius: 5px;
   overflow: hidden;
+}
+
+.movie-img {
+  transition: transform $transition-style 250ms, filter $transition-style 250ms;
 }
 
 .line {

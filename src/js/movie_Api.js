@@ -47,7 +47,7 @@ export default class FetchApi {
         return moviesList;
       }
 
-      const response = await instance.get(`/trending/all/day?page=${this.currentPage}`);
+      const response = await instance.get(`/movie/popular?page=${this.currentPage}`);
       const moviesList = response.data;
 
       return moviesList;
@@ -70,7 +70,7 @@ export default class FetchApi {
         return moviesList;
       }
 
-      const response = await instance.get(`/trending/all/day?page=${++this.currentPage}`);
+      const response = await instance.get(`/movie/popular?page=${++this.currentPage}`);
       const moviesList = response.data;
 
       return moviesList;
@@ -93,7 +93,7 @@ export default class FetchApi {
         return moviesList;
       }
 
-      const response = await instance.get(`/trending/all/day?page=${--this.currentPage}`);
+      const response = await instance.get(`/movie/popular?page=${--this.currentPage}`);
       const moviesList = response.data;
 
       return moviesList;
@@ -106,7 +106,7 @@ export default class FetchApi {
     try {
       this.currentPage = 1;
 
-      const response = await instance.get(`/trending/all/day?page=${this.currentPage}`);
+      const response = await instance.get(`/movie/popular?page=${this.currentPage}`);
       const moviesList = response.data;
 
       this.maxPage = moviesList.total_pages;
