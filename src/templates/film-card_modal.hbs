@@ -1,0 +1,40 @@
+<div class="modal_thumb">
+ <img src="https://image.tmdb.org/t/p/w342{{poster_path}}" alt="{{#if title}} {{title}} {{else}} {{name}} {{/if}}" class="film-poster" />
+
+<div class="film-card_text-content">
+    <h2 class="film-name">{{title}}</h2>
+  <div class="meta-info_container">
+    <ul class="list meta-info_list">
+      <li class="meta-info_item">Vote / Votes</li>
+      <li class="meta-info_item">Popularity</li>
+      <li class="meta-info_item">Original Title</li>
+      <li class="meta-info_item">Genre</li>
+    </ul>
+     <ul class="list meta-info_list-content">
+          <li class="meta-info_item-content">
+              <span class="evg-vote_item">{{vote_average}}</span> / <span class="total-vote_item">{{vote_count}}</span>
+          </li>
+          <li class="meta-info_item-content">{{popularity}}</li>
+          <li class="meta-info_item-content">
+              <span class="film-name_item">{{original_title}}</span>
+          </li>
+          <li class="meta-info_item-content">
+            {{#each genres}}
+              {{#if @last}}
+                {{this.name}}
+                {{else}}{{this.name}}, 
+              {{/if}}  
+            {{/each}}
+          </li>
+      </ul>
+  </div>
+      <h3 class="about-title">About</h3>
+        <p class="about-content">
+          {{overview}}
+        </p>
+        <div class="btn-container">
+          <button type="submit" class="btn modal-btn watched_btn">Add to watched</button>
+          <button type="submit" class="btn modal-btn queue_btn">Add to queue</button>
+        </div>
+  </div>
+</div>
