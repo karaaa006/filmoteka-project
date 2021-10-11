@@ -7,13 +7,7 @@ import navButtons from './js/nav-buttons'
 
 
 
-console.log('Преобразование ID жанров в их название: ', genres_decoder([10759, 9648, 18]));
 
-const request = new requestApi();
-request.searchMovies('Smith').then(d => console.log('Поиск фильмов по запросу: ', d));
-request.getPopularMovies().then(d => console.log('Популярные фильмы: ', d));
-request.getMovieInfo('122').then(d => console.log('Информация о фильме по ID: ', d));
-request.getUpcomingMovies().then(d => console.log('Скоро в кино: ', d));
 
-changeButtonsColor()
 navButtons()
+

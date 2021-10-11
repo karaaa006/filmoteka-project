@@ -1,14 +1,42 @@
-const navList = document.querySelector('.navigation-list')
+import input from '../partials/header-input.hbs'
+import buttons from '../partials/header-buttons.hbs'
+import changeButtonsColor from './control-buttons'
+
 const homeButton = document.querySelector('#home')
 const myLybraryButton = document.querySelector('#my_lybrary')
+const dinamicContent = document.querySelector('.dinamic-content')
+const header = document.querySelector('.header')
+
+
 
 
 
 export default function navButtons() {
-    navList.addEventListener('click', (event) => {
-        console.log(event.target)
-        console.log(homeButton)
-        console.log(myLybraryButton)
-    })
-   
+    dinamicContent.insertAdjacentHTML('beforeend', input())
+    myLybraryButton.addEventListener('click', onLibraryButtonClick)
+}
+
+
+function onLibraryButtonClick() {
+    myLybraryButton.removeEventListener('click', onLibraryButtonClick)
+    homeButton.addEventListener('click', onHomeButtonClick)
+    dinamicContent.innerHTML =''
+    dinamicContent.insertAdjacentHTML('beforeend', buttons())
+    homeButton.classList.remove('active')
+    myLybraryButton.classList.add('active')
+    header.classList.remove('header')
+    header.classList.add('header-library')
+    changeButtonsColor()
+}
+
+function onHomeButtonClick() {
+    homeButton.removeEventListener('click', onHomeButtonClick)
+    myLybraryButton.addEventListener('click', onLibraryButtonClick)
+    dinamicContent.innerHTML = ''
+    dinamicContent.insertAdjacentHTML('beforeend', input())
+    myLybraryButton.classList.remove('active')
+    homeButton.classList.add('active')
+    header.classList.remove('header-library')
+    header.classList.add('header')
+    // Сюда надо вставить вызов функции по отрисовке библиотеки фильмов
 }

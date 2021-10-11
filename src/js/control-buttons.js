@@ -1,10 +1,11 @@
-const controlButtons = document.querySelector('.control-buttons')
-const watchedButton = document.querySelector('#watched')
-const queueButton = document.querySelector('#queue')
+const controlButtons = document.querySelector('.dinamic-content')
+
 
 export default function changeButtonsColor() {
     showWatchedFilms()
     controlButtons.addEventListener('click', (event) => {
+        const watchedButton = document.querySelector('#watched')
+        const queueButton = document.querySelector('#queue')
         if (event.target.classList.contains('active')) {
             return
         } else if (event.target === watchedButton) {
@@ -18,6 +19,8 @@ export default function changeButtonsColor() {
         }
     })
 }
+
+// Вместо этих двух функций должен быть вызов функций по отрисовке библиотеки пользователя
 
 function showWatchedFilms() {
     console.log('показать просмотренные фильмы')
