@@ -30,13 +30,17 @@
   max-width: $phone-sz;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
 
   @include for-tablet {
     max-width: $tablet-sz;
+    padding-left: 75px;
+    padding-right: 75px;
   }
   @include for-desktop {
     max-width: $desktop-sz;
+    padding-left: 71px;
+    padding-right: 71px;
   }
 }
