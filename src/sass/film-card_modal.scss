@@ -5,6 +5,10 @@
 // загальні стилі кнопок теж потрібно винести і чотири кольори, чорний, білий, #8C8C8C, #FF6B01
 //  також потрібні точки перелому і змінні винести
 
+
+
+
+
 .list {
   list-style: none;
   padding: 0;
@@ -27,6 +31,7 @@
     background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5));
     overflow: auto;
     overflow-y: scroll;
+    
   }
   
 
@@ -79,6 +84,7 @@
     &:focus .modal__close-icon {
       fill: #FF6B01;
     }
+    cursor: pointer;
    
   }
 
@@ -222,6 +228,7 @@
     background-color: inherit;
     border-style: 1px solid black;
     border-radius: 5px;
+    cursor: pointer;
 }
 
   .watched_btn {
