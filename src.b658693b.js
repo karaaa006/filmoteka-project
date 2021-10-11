@@ -93,4 +93,4 @@ module.exports=require("./lib/axios");
 },{"./movie_Api.js":"ccOE","./genres_decoder":"i1JI","./renderMovieMarkup.js":"OA5M","../templates/film-card-li.hbs":"cRF3"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/renderMovieModal"),require("./js/nav-buttons"),require("./js/getPopularMovies.js");
 },{"./sass/main.scss":"clu1","./js/renderMovieModal":"GXRB","./js/nav-buttons":"FKU9","./js/getPopularMovies.js":"cCjI"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka-project/src.eaa2bcb8.js.map
+//# sourceMappingURL=/filmoteka-project/src.b658693b.js.map
