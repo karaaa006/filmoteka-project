@@ -3,6 +3,15 @@ import './js/renderMovieModal';
 
 import requestApi from './js/movie_Api';
 import genres_decoder from './js/genres_decoder';
+import changeButtonsColor from './js/control-buttons'
+import navButtons from './js/nav-buttons'
+
+
+
+
+
+navButtons()
+
 import './js/renderMovieModal';
 
 // console.log('Преобразование ID жанров в их название: ', genres_decoder([10759, 9648, 18]));

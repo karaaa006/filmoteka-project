@@ -1,0 +1,174 @@
+.header {
+  background-color: #000;
+  background-image: url(../images/header_home_bg_phone.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 41px;
+  padding-bottom: 61px;
+
+  @include from-none-to-tablet {
+    background-image: url(../images/header_home_bg_tablet.jpg);
+  }
+  @include for-tablet {
+    background-image: url(../images/header_home_bg.jpg);
+  }
+}
+
+.header-library {
+  background-color: #000;
+  background-image: url(../images/header_library_bg_phone.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 41px;
+  padding-bottom: 65px;
+
+  @include from-none-to-tablet {
+    background-image: url(../images/header_library_bg_tablet.jpg);
+  }
+  @include for-tablet {
+    background-image: url(../images/header_library_bg.jpg);
+  }
+}
+
+.header-main {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  @include for-tablet {
+    padding-left: 51px;
+    padding-right: 51px;
+  }
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  @include from-none-to-tablet {
+    display: none;
+  }
+  @include for-tablet {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: $page-bg-cl;
+    margin-left: 12px;
+  }
+}
+
+.navigation-list {
+  display: flex;
+}
+
+.navigation-list-item:not(:first-child) {
+  margin-left: 39px;
+}
+.navigation-list-item__button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: $page-bg-cl;
+  text-transform: uppercase;
+  border: none;
+  background-color: transparent;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+}
+
+.control-buttons__item {
+  list-style: none;
+}
+
+.control-buttons__item:not(:first-child) {
+  @include from-none-to-tablet {
+    margin-left: 20px;
+  }
+  @include for-tablet {
+    margin-left: 15px;
+  }
+}
+
+.button {
+  color: $page-bg-cl;
+  text-transform: uppercase;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid $page-bg-cl;
+  height: 44px;
+  @include from-none-to-tablet {
+    width: 129px;
+  }
+  @include for-tablet {
+    width: 135px;
+  }
+}
+
+.button.active {
+  background-color: $accent-cl;
+  border-color: $accent-cl;
+}
+
+.header-input-box {
+  position: relative;
+  display: flex;
+
+  padding-top: 41px;
+  padding-bottom: 32px;
+}
+
+.header-input {
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
+  height: 20px;
+  background-color: inherit;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.5px solid #ffffff;
+
+  @include for-tablet {
+    width: 336px;
+  }
+}
+
+::placeholder {
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+
+  color: #ffffff;
+}
+
+.search-svg {
+  position: absolute;
+  display: block;
+  left: 100px;
+}
+
+.navigation-list-item__button.active::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: $accent-cl;
+}
