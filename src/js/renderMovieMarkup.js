@@ -1,4 +1,3 @@
-
 import refs from './refs.js';
 
 const { movieListRef } = refs;
