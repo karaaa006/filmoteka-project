@@ -37,6 +37,8 @@ function closeModal() {
   refs.modalBackdrop.classList.add('is-hidden');
   document.body.style.overflow = '';
   removeEventListeners();
+  refs.movieMarkup.innerHTML = "";
+
 }
 
 function closeModalByKeydown(e) {

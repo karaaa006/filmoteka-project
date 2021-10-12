@@ -1,7 +1,4 @@
-//додав загальні стилі, потрібно їх перенести в файл common.scss
-// також всюди прописав шрифт та властивості, їх теж потрібно в змінні винести
-// загальні стилі кнопок теж потрібно винести і чотири кольори, чорний, білий, #8C8C8C, $accent-cl
-//  також потрібні точки перелому і змінні винести
+
 
 .list {
   list-style: none;
@@ -22,7 +19,7 @@
   padding: 0 20px;
 
   opacity: 1;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 1000ms cubic-bezier(0.4, 0, 0.2, 1);
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 
   @include for-tablet {
