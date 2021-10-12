@@ -1,12 +1,16 @@
 import movieTpl from '../templates/film-card_modal.hbs';
 import movie_Api from './movie_Api';
+import LSService from './storage';
 const api = new movie_Api();
+const lsService = new LSService();
 
 const refs = {
   filmCard: document.querySelector('.movie-list'),
   modalBackdrop: document.querySelector('.backdrop-js'),
   modalCloseBtn: document.querySelector('[data-modal-close]'),
   movieMarkup: document.querySelector('.template-container'),
+  watchedBtn: document.querySelector('.watched_btn'),
+  queueBtn: document.querySelector('.queue_btn'),
 };
 
 refs.filmCard.addEventListener('click', onFilmClick);
@@ -29,6 +33,7 @@ function removeEventListeners() {
 
 function openModal() {
   refs.modalBackdrop.classList.remove('is-hidden');
+
   document.body.style.overflow = 'hidden';
   addEventListeners();
 }
@@ -53,15 +58,62 @@ function closeModalByBackdropClick(e) {
 }
 
 function onFilmClick(e) {
-  const id = e.target.closest('li').dataset.movieId;
+  const id = Number(e.target.closest('li').dataset.movieId);
+  lsService.currentID = id;
+
   openModal();
   api.getMovieInfo(id).then(d => {
     renderMovieMarckup(d);
     console.log(d);
+    let watchedBtn = document.querySelector('.watched_btn');
   });
 }
 
 function renderMovieMarckup(movie) {
   const markup = movieTpl(movie);
   refs.movieMarkup.innerHTML = markup;
+}
+
+refs.modalBackdrop.addEventListener('click', e => {
+  let btn = e.target.closest('button');
+  if (btn) {
+    if (btn.classList.contains('watched_btn')) {
+      addToWatched();
+      btn.setAttribute('disabled', true);
+      // btn.textContent = 'Delete from WATCHED';
+    } else if (btn.classList.contains('queue_btn')) {
+      addToQueue();
+      btn.setAttribute('disabled', true);
+      // btn.textContent = 'Delete from QUEUE';
+    }
+  } else return;
+});
+
+// refs.modalBackdrop.addEventListener('click', e => {
+//   let btn = e.target.closest('button');
+//   if (btn) {
+//     if (btn.classList.contains('watched_btn')) {
+//       addToWatched();
+//       // btn.textContent = 'Delete from WATCHED';
+//     } else if (btn.classList.contains('queue_btn')) {
+//       addToQueue();
+//       // btn.textContent = 'Delete from QUEUE';
+//     }
+//   } else return;
+// });
+
+function addToWatched() {
+  let id = lsService.id;
+  lsService.setWatchedToStorage(id);
+}
+
+// function deleteFromWatched() {
+//   let id = lsService.id;
+//   lsService.deleteMovieFromLS(id);
+// }
+
+function addToQueue() {
+  let id = lsService.id;
+  lsService.setQueueToStorage(id);
+  // refs.queueBtn.setAttribute('disabled', true);
 }
