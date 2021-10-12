@@ -58,6 +58,8 @@ function closeModalByBackdropClick(e) {
 }
 
 function onFilmClick(e) {
+  if (e.target.nodeName === 'UL') return;
+
   const id = Number(e.target.closest('li').dataset.movieId);
   lsService.currentID = id;
 

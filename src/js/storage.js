@@ -8,11 +8,6 @@ const ref = {
 
 console.log(ref.backdropCard);
 
-ref.list.addEventListener('click', e => {
-  ref.backdropCard.classList.remove('is-hidden');
-  console.log(e.target);
-});
-
 const fetchApi = new FetchApi();
 
 export default class LSService {
