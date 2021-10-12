@@ -10,6 +10,5 @@ request.searchMovies('INJUSTICE').then(d => console.log('Поиск фильмо
 request.getPopularMovies().then(d => console.log('Популярные фильмы: ', d));
 request.getMovieInfo('122').then(d => console.log('Информация о фильме по ID: ', d));
 request.getUpcomingMovies().then(d => console.log('Скоро в кино: ', d));
-request.selectPage(41).then(d => console.log('42: ', d));
 import getMovies from './js/getPopularMovies.js';
 import paginationButtons from './js/paginationButtons.js'
