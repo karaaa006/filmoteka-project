@@ -10,7 +10,7 @@ const movieApi = new FetchApi();
   
 
 const options = {
-  totalItems: 5000,
+  totalItems: 10000,
   itemsPerPage: 20,
   visiblePages: 5,
   page: 1,
