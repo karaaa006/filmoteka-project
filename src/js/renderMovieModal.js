@@ -1,6 +1,7 @@
 import movieTpl from '../templates/film-card_modal.hbs';
 import movie_Api from './movie_Api';
 import LSService from './storage';
+import _debounce from 'debounce';
 const api = new movie_Api();
 const lsService = new LSService();
 
@@ -13,7 +14,9 @@ const refs = {
   queueBtn: document.querySelector('.queue_btn'),
 };
 
-refs.filmCard.addEventListener('click', onFilmClick);
+let spinner = '';
+
+refs.filmCard.addEventListener('click', _debounce(onFilmClick, 350));
 
 function addEventListeners() {
   refs.modalCloseBtn.addEventListener('click', closeModal);
@@ -59,15 +62,20 @@ function closeModalByBackdropClick(e) {
 
 function onFilmClick(e) {
   if (e.target.nodeName === 'UL') return;
+  refs.movieMarkup.innerHTML = '';
 
   const id = Number(e.target.closest('li').dataset.movieId);
   lsService.currentID = id;
+  spinner = e.target.closest('li').querySelector('.lds-ellipsis');
 
+  showSpinner();
   openModal();
   api.getMovieInfo(id).then(d => {
     renderMovieMarckup(d);
+    removeSpinner();
     console.log(d);
     let watchedBtn = document.querySelector('.watched_btn');
+    // console.log(watchedBtn)
   });
 }
 
@@ -118,4 +126,16 @@ function addToQueue() {
   let id = lsService.id;
   lsService.setQueueToStorage(id);
   // refs.queueBtn.setAttribute('disabled', true);
+}
+
+function showSpinner() {
+  spinner.classList.remove('non-active');
+  console.log(spinner);
+  // видалити консоль пысля перевырки
+}
+
+function removeSpinner() {
+  spinner.classList.add('non-active');
+  console.log(spinner);
+  // видалити консоль пысля перевырки
 }
