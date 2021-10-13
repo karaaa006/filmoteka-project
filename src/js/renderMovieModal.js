@@ -14,7 +14,7 @@ const refs = {
   queueBtn: document.querySelector('.queue_btn'),
 };
 
-console.log(_debounce)
+let spinner = ''
 
 refs.filmCard.addEventListener('click', _debounce(onFilmClick, 350));
 
@@ -132,12 +132,18 @@ function addToQueue() {
   // refs.queueBtn.setAttribute('disabled', true);
 }
 
-let spinner = ''
+
+
+
 
 function showSpinner (){
   spinner.classList.remove('non-active')
+  console.log(spinner)
+  // видалити консоль пысля перевырки
 }
 
 function removeSpinner () {
   spinner.classList.add('non-active')
+  console.log(spinner) 
+  // видалити консоль пысля перевырки
 }
