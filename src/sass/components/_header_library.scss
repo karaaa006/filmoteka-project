@@ -122,9 +122,16 @@
   }
 }
 
+.button:hover {
+  color: $accent-cl;
+  border: 1px solid $accent-cl;
+  cursor: pointer;
+}
+
 .button.active {
   background-color: $accent-cl;
   border-color: $accent-cl;
+  color: $page-bg-cl;
 }
 
 .tumb {
