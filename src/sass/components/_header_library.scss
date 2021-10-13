@@ -83,12 +83,12 @@
   background-color: transparent;
 }
 
-.navigation-list-item__button:hover,
-.navigation-list-item__button:focus {
+.navigation-list-item__button:hover {
   color: $accent-cl;
   cursor: pointer;
   box-shadow: 0 0 10px $accent-cl;
   border-radius: 10px;
+  outline: none;
 }
 
 .control-buttons {
@@ -130,8 +130,7 @@
   }
 }
 
-.button:hover,
-.button:focus {
+.button:hover {
   color: $accent-cl;
   border: 1px solid $accent-cl;
   cursor: pointer;
