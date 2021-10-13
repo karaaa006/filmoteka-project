@@ -1,6 +1,7 @@
 import movieTpl from '../templates/film-card_modal.hbs';
 import movie_Api from './movie_Api';
 import LSService from './storage';
+import _debounce from 'debounce';
 const api = new movie_Api();
 const lsService = new LSService();
 
@@ -13,7 +14,9 @@ const refs = {
   queueBtn: document.querySelector('.queue_btn'),
 };
 
-refs.filmCard.addEventListener('click', onFilmClick);
+console.log(_debounce)
+
+refs.filmCard.addEventListener('click', _debounce(onFilmClick, 350));
 
 function addEventListeners() {
   refs.modalCloseBtn.addEventListener('click', closeModal);
@@ -32,6 +35,8 @@ function removeEventListeners() {
 }
 
 function openModal() {
+ 
+  
   refs.modalBackdrop.classList.remove('is-hidden');
 
   document.body.style.overflow = 'hidden';
@@ -39,6 +44,7 @@ function openModal() {
 }
 
 function closeModal() {
+  refs.movieMarkup.innerHTML = "";
   refs.modalBackdrop.classList.add('is-hidden');
   document.body.style.overflow = '';
   removeEventListeners();
@@ -57,17 +63,23 @@ function closeModalByBackdropClick(e) {
   }
 }
 
+
+
 function onFilmClick(e) {
   if (e.target.nodeName === 'UL') return;
 
   const id = Number(e.target.closest('li').dataset.movieId);
   lsService.currentID = id;
-
-  openModal();
+  spinner = e.target.closest('li').querySelector('.lds-ellipsis')
+  
+  showSpinner()
+  openModal()
   api.getMovieInfo(id).then(d => {
     renderMovieMarckup(d);
+    removeSpinner();
     console.log(d);
     let watchedBtn = document.querySelector('.watched_btn');
+    // console.log(watchedBtn)
   });
 }
 
@@ -118,4 +130,14 @@ function addToQueue() {
   let id = lsService.id;
   lsService.setQueueToStorage(id);
   // refs.queueBtn.setAttribute('disabled', true);
+}
+
+let spinner = ''
+
+function showSpinner (){
+  spinner.classList.remove('non-active')
+}
+
+function removeSpinner () {
+  spinner.classList.add('non-active')
 }
