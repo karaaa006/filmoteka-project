@@ -1,6 +1,9 @@
 import input from '../templates/header-input.hbs';
 import buttons from '../templates/header-buttons.hbs';
 import changeButtonsColor from './control-buttons';
+import FetchApi from './movie_Api.js';
+import { getModifiedData } from './getModifiedData.js';
+
 
 const homeButton = document.querySelector('#home');
 const myLybraryButton = document.querySelector('#my_lybrary');
@@ -35,5 +38,6 @@ function onHomeButtonClick() {
   homeButton.classList.add('active');
   header.classList.remove('header-library');
   header.classList.add('header');
-  // Сюда надо вставить вызов функции по отрисовке библиотеки фильмов
+  const movieApi = new FetchApi();
+  getModifiedData(movieApi.getPopularMovies())
 }

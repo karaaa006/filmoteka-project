@@ -72,8 +72,6 @@
   margin-left: 39px;
 }
 .navigation-list-item__button {
-  font-family: Roboto;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -81,6 +79,25 @@
   text-transform: uppercase;
   border: none;
   background-color: transparent;
+  cursor: pointer;
+  transition: background-color $transition-style 250ms;
+}
+
+.navigation-list-item__button::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color $transition-style 250ms;
+}
+
+.navigation-list-item__button.active::after {
+  background-color: $accent-cl;
+}
+
+.navigation-list-item__button:hover::after {
+  background-color: $page-bg-cl;
 }
 
 .control-buttons {
@@ -105,8 +122,6 @@
 .button {
   color: $page-bg-cl;
   text-transform: uppercase;
-  font-family: Roboto;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -114,6 +129,10 @@
   border-radius: 5px;
   border: 1px solid $page-bg-cl;
   height: 44px;
+  box-shadow: 0 0 10px transparent;
+
+  transition: color $transition-style 250ms, border-color $transition-style 250ms,
+    box-shadow $transition-style 250ms, background-color $transition-style 250ms;
   @include from-none-to-tablet {
     width: 129px;
   }
@@ -122,9 +141,17 @@
   }
 }
 
+.button:hover {
+  color: $accent-cl;
+  border-color: $accent-cl;
+  cursor: pointer;
+  box-shadow: 0 0 10px $accent-cl;
+}
+
 .button.active {
   background-color: $accent-cl;
   border-color: $accent-cl;
+  color: $page-bg-cl;
 }
 
 .tumb {
@@ -177,12 +204,4 @@
   @include for-tablet {
     left: 324px;
   }
-}
-
-.navigation-list-item__button.active::after {
-  content: '';
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: $accent-cl;
 }
