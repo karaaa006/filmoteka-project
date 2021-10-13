@@ -83,12 +83,24 @@
   background-color: transparent;
 }
 
+.navigation-list-item__button.active::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: $accent-cl;
+}
+
 .navigation-list-item__button:hover {
-  color: $accent-cl;
   cursor: pointer;
-  box-shadow: 0 0 10px $accent-cl;
-  border-radius: 10px;
-  outline: none;
+}
+
+.navigation-list-item__button:hover::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: $page-bg-cl;
 }
 
 .control-buttons {
@@ -193,12 +205,4 @@
   @include for-tablet {
     left: 324px;
   }
-}
-
-.navigation-list-item__button.active::after {
-  content: '';
-  display: block;
-  height: 3px;
-  width: 100%;
-  background-color: $accent-cl;
 }
