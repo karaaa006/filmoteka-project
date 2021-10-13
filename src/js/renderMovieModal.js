@@ -14,7 +14,7 @@ const refs = {
   queueBtn: document.querySelector('.queue_btn'),
 };
 
-let spinner = ''
+let spinner = '';
 
 refs.filmCard.addEventListener('click', _debounce(onFilmClick, 350));
 
@@ -35,8 +35,6 @@ function removeEventListeners() {
 }
 
 function openModal() {
- 
-  
   refs.modalBackdrop.classList.remove('is-hidden');
 
   document.body.style.overflow = 'hidden';
@@ -44,7 +42,6 @@ function openModal() {
 }
 
 function closeModal() {
-  refs.movieMarkup.innerHTML = "";
   refs.modalBackdrop.classList.add('is-hidden');
   document.body.style.overflow = '';
   removeEventListeners();
@@ -63,17 +60,16 @@ function closeModalByBackdropClick(e) {
   }
 }
 
-
-
 function onFilmClick(e) {
   if (e.target.nodeName === 'UL') return;
+  refs.movieMarkup.innerHTML = '';
 
   const id = Number(e.target.closest('li').dataset.movieId);
   lsService.currentID = id;
-  spinner = e.target.closest('li').querySelector('.lds-ellipsis')
-  
-  showSpinner()
-  openModal()
+  spinner = e.target.closest('li').querySelector('.lds-ellipsis');
+
+  showSpinner();
+  openModal();
   api.getMovieInfo(id).then(d => {
     renderMovieMarckup(d);
     removeSpinner();
@@ -132,18 +128,14 @@ function addToQueue() {
   // refs.queueBtn.setAttribute('disabled', true);
 }
 
-
-
-
-
-function showSpinner (){
-  spinner.classList.remove('non-active')
-  console.log(spinner)
+function showSpinner() {
+  spinner.classList.remove('non-active');
+  console.log(spinner);
   // видалити консоль пысля перевырки
 }
 
-function removeSpinner () {
-  spinner.classList.add('non-active')
-  console.log(spinner) 
+function removeSpinner() {
+  spinner.classList.add('non-active');
+  console.log(spinner);
   // видалити консоль пысля перевырки
 }
