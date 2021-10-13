@@ -83,6 +83,14 @@
   background-color: transparent;
 }
 
+.navigation-list-item__button:hover,
+.navigation-list-item__button:focus {
+  color: $accent-cl;
+  cursor: pointer;
+  box-shadow: 0 0 10px $accent-cl;
+  border-radius: 10px;
+}
+
 .control-buttons {
   display: flex;
   justify-content: center;
@@ -122,10 +130,12 @@
   }
 }
 
-.button:hover {
+.button:hover,
+.button:focus {
   color: $accent-cl;
   border: 1px solid $accent-cl;
   cursor: pointer;
+  box-shadow: 0 0 10px $accent-cl;
 }
 
 .button.active {
