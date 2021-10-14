@@ -123,6 +123,6 @@ function showSpinner() {
 
 function removeSpinner() {
   spinner.classList.add('non-active');
-  console.log(spinner);
+  // console.log(spinner);
   // видалити консоль пысля перевырки
 }

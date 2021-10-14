@@ -5,3 +5,11 @@ export default function (idArray) {
 
   return genresList;
 }
+
+export const genres_decoderLS = idArray => {
+  const genresList = idArray.map(
+    movieGenre => genresDB.find(genre => genre.id === movieGenre.id).name,
+  );
+
+  return genresList;
+};

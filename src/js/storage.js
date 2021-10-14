@@ -1,6 +1,8 @@
 import FetchApi from './movie_Api';
-
 const fetchApi = new FetchApi();
+
+import { getModifiedData } from './getModifiedData';
+import { getModifiedDataLS } from './getModifiedData';
 
 export default class LSService {
   constructor() {
@@ -32,7 +34,9 @@ export default class LSService {
 
   // добавить фильм в Watched
   async setWatchedToStorage() {
-    const info = await fetchApi.getMovieInfo(this.id);
+    const object = await fetchApi.getMovieInfo(this.id);
+
+    const info = await getModifiedDataLS(object);
 
     this.watchedArray.push(info);
     try {
@@ -61,7 +65,8 @@ export default class LSService {
 
   // добавить фильм в Queue
   async setQueueToStorage() {
-    const info = await fetchApi.getMovieInfo(this.id);
+    const array = await fetchApi.getMovieInfo(this.id);
+    const info = await getModifiedData(array);
     this.queueArray.push(info);
     try {
       localStorage.setItem('Queue', JSON.stringify(this.queueArray));
