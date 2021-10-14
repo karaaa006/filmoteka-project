@@ -3,5 +3,5 @@ import { getModifiedData } from './getModifiedData.js';
 
 const movieApi = new FetchApi();
 
-getModifiedData(movieApi.getPopularMovies())
+getModifiedData(movieApi.getPopularMovies());
 
