@@ -1,7 +1,7 @@
 {{#each this}}
 <li class="movie-list__card" data-movie-id="{{id}}" id="film-card-template">
 
-
+<a href="#" class="movie-list__card-link">
 <div class="card-img__thumb">
     
   <img class="movie-img" loading="lazy" srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 1x, https://image.tmdb.org/t/p/w780{{poster_path}} 2x" 
@@ -27,5 +27,6 @@
  
 </div>
 <div class="lds-ellipsis non-active"><div></div><div></div><div></div>
+</a>
 </li>
 {{/each}}

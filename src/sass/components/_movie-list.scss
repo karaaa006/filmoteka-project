@@ -9,7 +9,10 @@
     justify-content: center;
   }
 }
-
+.movie-list__card-link {
+  text-decoration: none;
+  color: inherit;
+}
 .movie-list__card {
   position: relative;
   margin-bottom: 20px;
