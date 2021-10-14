@@ -7,6 +7,7 @@ const homeButton = document.querySelector('#home');
 const myLybraryButton = document.querySelector('#my_lybrary');
 const dinamicContent = document.querySelector('.dinamic-content');
 const header = document.querySelector('.header');
+const paginationContainer = document.querySelector('.pagination');
 
 function navButtons() {
   dinamicContent.insertAdjacentHTML('beforeend', input());
@@ -36,6 +37,6 @@ function onHomeButtonClick() {
   homeButton.classList.add('active');
   header.classList.remove('header-library');
   header.classList.add('header');
-
+  paginationContainer.classList.remove('visually-hidden');
   getPopularMovies();
 }
