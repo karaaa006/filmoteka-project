@@ -1,4 +1,4 @@
-var eventHandler = require('event-handler');
+var eventHandler = require('./event-handler.js');
 
 var pagination = function (paginationWrapper, data) {
   var events = new eventHandler();
