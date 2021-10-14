@@ -1,6 +1,5 @@
 import LSService from './storage';
 const lsService = new LSService();
-
 import { renderMovieMarkup } from './renderMovieMarkup';
 import template from '../templates/film-card-li.hbs';
 const controlButtons = document.querySelector('.dinamic-content');
@@ -29,11 +28,12 @@ export default function changeButtonsColor() {
 function showWatchedFilms() {
   console.log('показать просмотренные фильмы');
   let array = lsService.getFromWatchedLS();
-  console.log(array);
+
   renderMovieMarkup(template, array);
 }
 function showQueue() {
   console.log('показать очередь воспроизведения');
   let array = lsService.getQueueLS();
+
   renderMovieMarkup(template, array);
 }

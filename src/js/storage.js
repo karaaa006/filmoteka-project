@@ -33,7 +33,6 @@ export default class LSService {
   // добавить фильм в Watched
   async setWatchedToStorage() {
     const info = await fetchApi.getMovieInfo(this.id);
-    // console.log(info);
 
     this.watchedArray.push(info);
     try {
@@ -110,6 +109,8 @@ export default class LSService {
   }
 }
 
+// console.log(id, poster_path, title, name, genre_ids, release_date, first_air_date, vote_average);
+
 // const {
 //   id,
 //   poster_path,
@@ -119,15 +120,14 @@ export default class LSService {
 //   release_date,
 //   first_air_date,
 //   vote_average,
-// } = array;
-
-// console.log(id, poster_path, title, name, genre_ids, release_date, first_air_date, vote_average);
-
-// this.watchedArray = () => {
-//   if (JSON.parse(localStorage.getItem('Watched').length)) {
-//     let watchedArray = JSON.parse(localStorage.getItem('Watched'));
-//     return watchedArray;
-//   } else {
-//     return (this.watchedArray = []);
-//   }
-// };
+// } = info;
+// console.log(
+//   `id:${id}`,
+//   `poster_path: ${poster_path}`,
+//   `title: ${title}`,
+//   `name: ${name}`,
+//   `genre_ids: ${genre_ids}`,
+//   `release_date: ${release_date}`,
+//   `first_air_date: ${first_air_date}`,
+//   `vote_average: ${vote_average}`,
+// );

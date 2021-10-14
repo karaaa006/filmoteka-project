@@ -66,8 +66,7 @@ function onFilmClick(e) {
 
   const id = Number(e.target.closest('li').dataset.movieId);
   lsService.currentID = id;
-  console.log(id);
-  console.log(lsService.id);
+
   spinner = e.target.closest('li').querySelector('.lds-ellipsis');
 
   showSpinner();
@@ -98,47 +97,27 @@ function renderMovieMarckup(movie) {
 refs.modalBackdrop.addEventListener('click', e => {
   let btn = e.target;
   if (btn.classList.contains('watched_btn')) {
-    btn.classList.replace('watched_btn', 'del_watched');
     lsService.setWatchedToStorage();
+    btn.classList.replace('watched_btn', 'del_watched');
     btn.textContent = 'Delete from WATCHED';
   } else if (btn.classList.contains('del_watched')) {
     lsService.delFromWatched();
-    btn.textContent = 'Add to watched';
     btn.classList.replace('del_watched', 'watched_btn');
+    btn.textContent = 'Add to watched';
   } else if (btn.classList.contains('queue_btn')) {
     lsService.setQueueToStorage();
-    btn.classList.toggle('del_queue');
+    btn.classList.replace('queue_btn', 'del_queue');
     btn.textContent = 'Delete from QUEUE';
   } else if (btn.classList.contains('del_queue')) {
     lsService.delFromQueue();
-    btn.classList.toggle('del_queue');
+    btn.classList.replace('del_queue', 'queue_btn');
     btn.textContent = 'Add to queue';
   }
 });
 
-function addToWatched() {
-  let id = lsService.id;
-  lsService.setWatchedToStorage(id);
-}
-
-function deleteFromWatched() {
-  let id = lsService.id;
-  lsService.delFromWatched(id);
-}
-
-function addToQueue() {
-  let id = lsService.id;
-  lsService.setQueueToStorage(id);
-}
-
-function deleteFromWatched() {
-  let id = lsService.id;
-  lsService.delFromQueue(id);
-}
-
 function showSpinner() {
   spinner.classList.remove('non-active');
-  console.log(spinner);
+  // console.log(spinner);
   // видалити консоль пысля перевырки
 }
 
