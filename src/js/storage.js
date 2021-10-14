@@ -66,7 +66,7 @@ export default class LSService {
   // добавить фильм в Queue
   async setQueueToStorage() {
     const array = await fetchApi.getMovieInfo(this.id);
-    const info = await getModifiedData(array);
+    const info = await getModifiedDataLS(array);
     this.queueArray.push(info);
     try {
       localStorage.setItem('Queue', JSON.stringify(this.queueArray));
