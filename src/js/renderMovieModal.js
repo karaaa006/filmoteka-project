@@ -10,8 +10,7 @@ const refs = {
   modalBackdrop: document.querySelector('.backdrop-js'),
   modalCloseBtn: document.querySelector('[data-modal-close]'),
   movieMarkup: document.querySelector('.template-container'),
-  watchedBtn: document.querySelector('.watched_btn'),
-  queueBtn: document.querySelector('.queue_btn'),
+  btnWatched: document.querySelector('.watched_btn'),
 };
 
 let spinner = '';
@@ -38,6 +37,7 @@ function openModal() {
   refs.modalBackdrop.classList.remove('is-hidden');
 
   document.body.style.overflow = 'hidden';
+
   addEventListeners();
 }
 
@@ -70,7 +70,13 @@ function onFilmClick(e) {
 
   showSpinner();
   openModal();
+
   api.getMovieInfo(id).then(d => {
+    // let watchedArray = lsService.getFromWatchedLS();
+    // let queueArray = lsService.getQueueLS();
+    // console.log(queueArray);
+    // if (watchedArray.some(movie => movie.id === d.id)) d.watched = true;
+    // if (queueArray.some(movie => movie.id === d.id)) d.queue = true;
     renderMovieMarckup(d);
     removeSpinner();
     console.log(d);
@@ -79,6 +85,11 @@ function onFilmClick(e) {
   });
 }
 
+// function changeToDelete() {
+//   refs.btnWatched.classList.toggle('watched_btn', 'del_watched');
+//   refs.btnWatched.textContent = 'Delete from WATCHED';
+// }
+
 function renderMovieMarckup(movie) {
   const markup = movieTpl(movie);
   refs.movieMarkup.innerHTML = markup;
@@ -86,17 +97,30 @@ function renderMovieMarckup(movie) {
 
 refs.modalBackdrop.addEventListener('click', e => {
   let btn = e.target.closest('button');
-  if (btn) {
-    if (btn.classList.contains('watched_btn')) {
-      addToWatched();
-      btn.setAttribute('disabled', true);
-      // btn.textContent = 'Delete from WATCHED';
-    } else if (btn.classList.contains('queue_btn')) {
-      addToQueue();
-      btn.setAttribute('disabled', true);
-      // btn.textContent = 'Delete from QUEUE';
-    }
-  } else return;
+  let btnWatched = document.querySelector('.watched_btn');
+  let btnDelWatched = document.querySelector('.del_watched');
+  let btnQueue = document.querySelector('.queue_btn');
+  let btnDelQueue = document.querySelector('.del_queue');
+
+  console.log(btnWatched);
+  console.log(btnDelWatched);
+  console.log(btnQueue);
+  console.log(btnDelQueue);
+  // if (btn) {
+  //   if (btn.classList.contains('watched_btn')) {
+  //     btn.classList.replace('watched_btn', 'del_watched');
+  //     btnWatched.addEventListener('click', addToWatched);
+  //   } else if (btn.classList.contains('del_watched')) {
+  //     btn.classList.replace('watched_btn', 'del_watched');
+  //     btnDelWatched.addEventListener('click', () => {});
+  //   } else if (btn.classList.contains('queue_btn')) {
+  //     btn.classList.replace('queue_btn', 'del_queue');
+  //     btnQueue.addEventListener('click', addToQueue);
+  //   } else if (btn.classList.contains('del_queue')) {
+  //     btn.classList.replace('del_queue', 'queue_btn');
+  //     btnDelQueue.addEventListener('click', () => {});
+  //   } else return;
+  // }
 });
 
 // refs.modalBackdrop.addEventListener('click', e => {

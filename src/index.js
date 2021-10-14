@@ -4,7 +4,7 @@ import './js/renderMovieModal';
 import './js/nav-buttons';
 import './js/getPopularMovies.js';
 
-import paginationButtons from './js/paginationButtons.js'
+import paginationButtons from './js/paginationButtons.js';
 
 // import requestApi from './js/movie_Api';
 // import genres_decoder from './js/genres_decoder';
