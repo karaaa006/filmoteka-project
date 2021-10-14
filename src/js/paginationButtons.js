@@ -1,46 +1,70 @@
-import Pagination from 'tui-pagination';
-import 'tui-pagination/dist/tui-pagination.min.css';
-import FetchApi from './movie_Api.js';
+// import movieApi from './movie_Api.js';
 import refs from './refs.js';
 import { getModifiedData } from './getModifiedData.js';
+import pagination from 'pagination';
+import LSService from './storage.js';
 import { renderMovieMarkup } from './renderMovieMarkup';
 import template from '../templates/film-card-li.hbs';
+import getPortionData from './getPortionData';
 
 const { paginationContainerRef } = refs;
-const movieApi = new FetchApi();
 
-const options = {
-  totalItems: 10000,
-  itemsPerPage: 20,
-  visiblePages: 5,
-  page: 1,
-  centerAlign: true,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
-  template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>',
+export default {
+  apiPagination: function (movieList, movieApi) {
+    const paginationButtonsHome = new pagination(paginationContainerRef, {
+      currentPage: movieList.page,
+      totalItems: movieList.total_results,
+      itemsPerPage: 20,
+      step: 2,
+    });
+
+    paginationButtonsHome.onPageChanged(displayContent);
+
+    function displayContent(currentPage) {
+      getModifiedData(movieApi.selectPage(currentPage));
+    }
+
+    const pagesContainerRef = document.querySelector('.pagination span');
+    const leftArrowBtn = document.querySelector('.arrowLeft');
+    const rightArrowBtn = document.querySelector('.arrowRight');
+
+    const leftArrowTmpl =
+      '<svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>';
+    const rightArrowTmpl =
+      '<svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>';
+
+    leftArrowBtn.innerHTML = leftArrowTmpl;
+    rightArrowBtn.innerHTML = rightArrowTmpl;
+
+    pagesContainerRef.classList.add('pages-container');
+  },
+
+  lsPagination: function (movieList) {
+    const paginationButtonsHome = new pagination(paginationContainerRef, {
+      currentPage: 1,
+      totalItems: movieList.length,
+      itemsPerPage: 20,
+      step: 2,
+    });
+
+    paginationButtonsHome.onPageChanged(displayContent);
+
+    function displayContent(currentPage) {
+      renderMovieMarkup(template, getPortionData(movieList, 20, currentPage));
+    }
+
+    const pagesContainerRef = document.querySelector('.pagination span');
+    const leftArrowBtn = document.querySelector('.arrowLeft');
+    const rightArrowBtn = document.querySelector('.arrowRight');
+
+    const leftArrowTmpl =
+      '<svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>';
+    const rightArrowTmpl =
+      '<svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 0 24 24" width="16px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>';
+
+    leftArrowBtn.innerHTML = leftArrowTmpl;
+    rightArrowBtn.innerHTML = rightArrowTmpl;
+
+    pagesContainerRef.classList.add('pages-container');
   },
 };
-
-const pagination = new Pagination(paginationContainerRef, options);
-
-pagination.on('beforeMove', evt => {
-  const { page } = evt;
-
-  movieApi.selectPage(page).then(d => {
-    renderMovieMarkup(template, getModifiedData(d));
-  });
-});

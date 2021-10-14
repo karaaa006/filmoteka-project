@@ -21,17 +21,19 @@
   display: flex;
   justify-content: center;
   padding: 0px;
-  @media screen and (max-width: $phone-sz) {
-    flex-direction: column;
-    margin-right: auto;
-    margin-left: auto;
+  flex-direction: column;
+
+  @include for-tablet {
+    flex-direction: row;
   }
 }
 
 .footer__text {
-  margin-right: 5px;
   margin-right: auto;
   margin-left: auto;
+  @include for-tablet {
+    margin-right: 5px;
+  }
 }
 
 .footer__developed {
@@ -71,7 +73,6 @@
   transform-origin: 40px 40px;
 }
 .lds-heart div {
-
   top: 10px;
   left: 10px;
   position: absolute;
@@ -82,7 +83,7 @@
 }
 .lds-heart div:after,
 .lds-heart div:before {
-  content: " ";
+  content: ' ';
   position: absolute;
   display: block;
   width: 10px;

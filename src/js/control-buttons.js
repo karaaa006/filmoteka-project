@@ -1,7 +1,11 @@
 import LSService from './storage';
+import pagination from './paginationButtons';
 const lsService = new LSService();
+const { lsPagination } = pagination;
 import { renderMovieMarkup } from './renderMovieMarkup';
 import template from '../templates/film-card-li.hbs';
+import getPortionData from './getPortionData';
+
 const controlButtons = document.querySelector('.dinamic-content');
 
 export default function changeButtonsColor() {
@@ -26,14 +30,15 @@ export default function changeButtonsColor() {
 // Вместо этих двух функций должен быть вызов функций по отрисовке библиотеки пользователя
 
 function showWatchedFilms() {
-  console.log('показать просмотренные фильмы');
   let array = lsService.getFromWatchedLS();
 
-  renderMovieMarkup(template, array);
+  renderMovieMarkup(template, getPortionData(array, 20, 1)); //рендерим первую страницу фильмов
+  lsPagination(array); //добавляем пагинацию
 }
+
 function showQueue() {
-  console.log('показать очередь воспроизведения');
   let array = lsService.getQueueLS();
 
-  renderMovieMarkup(template, array);
+  renderMovieMarkup(template, getPortionData(array, 20, 1)); //рендерим первую страницу фильмов
+  lsPagination(array); //добавляем пагинацию
 }
