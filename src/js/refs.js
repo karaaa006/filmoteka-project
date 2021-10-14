@@ -1,4 +1,4 @@
 export default  {
-  paginationContainerRef: document.getElementById('tui-pagination-container'),
+  paginationContainerRef: document.getElementById('pagination-js'),
   movieListRef: document.querySelector('.movie-list'),
 }
