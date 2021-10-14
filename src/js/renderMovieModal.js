@@ -66,20 +66,28 @@ function onFilmClick(e) {
 
   const id = Number(e.target.closest('li').dataset.movieId);
   lsService.currentID = id;
+  console.log(id);
+  console.log(lsService.id);
   spinner = e.target.closest('li').querySelector('.lds-ellipsis');
 
   showSpinner();
   openModal();
 
   api.getMovieInfo(id).then(d => {
-    // let watchedArray = lsService.getFromWatchedLS();
-    // let queueArray = lsService.getQueueLS();
-    // console.log(queueArray);
-    // if (watchedArray.some(movie => movie.id === d.id)) d.watched = true;
-    // if (queueArray.some(movie => movie.id === d.id)) d.queue = true;
+    let watchedArray = lsService.getFromWatchedLS();
+    let queueArray = lsService.getQueueLS();
+
+    if (watchedArray) {
+      if (watchedArray.some(movie => movie.id === d.id)) d.watched = true;
+    }
+
+    if (queueArray) {
+      if (queueArray.some(movie => movie.id === d.id)) d.queue = true;
+    }
+
     renderMovieMarckup(d);
     removeSpinner();
-    console.log(d);
+    // console.log(d);
     let watchedBtn = document.querySelector('.watched_btn');
     // console.log(watchedBtn)
   });
@@ -96,31 +104,24 @@ function renderMovieMarckup(movie) {
 }
 
 refs.modalBackdrop.addEventListener('click', e => {
-  let btn = e.target.closest('button');
-  let btnWatched = document.querySelector('.watched_btn');
-  let btnDelWatched = document.querySelector('.del_watched');
-  let btnQueue = document.querySelector('.queue_btn');
-  let btnDelQueue = document.querySelector('.del_queue');
-
-  console.log(btnWatched);
-  console.log(btnDelWatched);
-  console.log(btnQueue);
-  console.log(btnDelQueue);
-  // if (btn) {
-  //   if (btn.classList.contains('watched_btn')) {
-  //     btn.classList.replace('watched_btn', 'del_watched');
-  //     btnWatched.addEventListener('click', addToWatched);
-  //   } else if (btn.classList.contains('del_watched')) {
-  //     btn.classList.replace('watched_btn', 'del_watched');
-  //     btnDelWatched.addEventListener('click', () => {});
-  //   } else if (btn.classList.contains('queue_btn')) {
-  //     btn.classList.replace('queue_btn', 'del_queue');
-  //     btnQueue.addEventListener('click', addToQueue);
-  //   } else if (btn.classList.contains('del_queue')) {
-  //     btn.classList.replace('del_queue', 'queue_btn');
-  //     btnDelQueue.addEventListener('click', () => {});
-  //   } else return;
-  // }
+  let btn = e.target;
+  if (btn.classList.contains('watched_btn')) {
+    btn.classList.replace('watched_btn', 'del_watched');
+    lsService.setWatchedToStorage();
+    btn.textContent = 'Delete from WATCHED';
+  } else if (btn.classList.contains('del_watched')) {
+    lsService.delFromWatched();
+    btn.textContent = 'Add to watched';
+    btn.classList.replace('del_watched', 'watched_btn');
+  } else if (btn.classList.contains('queue_btn')) {
+    lsService.setQueueToStorage();
+    btn.classList.toggle('del_queue');
+    btn.textContent = 'Delete from QUEUE';
+  } else if (btn.classList.contains('del_queue')) {
+    lsService.delFromQueue();
+    btn.classList.toggle('del_queue');
+    btn.textContent = 'Add to queue';
+  }
 });
 
 // refs.modalBackdrop.addEventListener('click', e => {
@@ -141,15 +142,19 @@ function addToWatched() {
   lsService.setWatchedToStorage(id);
 }
 
-// function deleteFromWatched() {
-//   let id = lsService.id;
-//   lsService.deleteMovieFromLS(id);
-// }
+function deleteFromWatched() {
+  let id = lsService.id;
+  lsService.delFromWatched(id);
+}
 
 function addToQueue() {
   let id = lsService.id;
   lsService.setQueueToStorage(id);
-  // refs.queueBtn.setAttribute('disabled', true);
+}
+
+function deleteFromWatched() {
+  let id = lsService.id;
+  lsService.delFromQueue(id);
 }
 
 function showSpinner() {
