@@ -1,7 +1,7 @@
 // import movieApi from './movie_Api.js';
 import refs from './refs.js';
 import { getModifiedData } from './getModifiedData.js';
-var pagination = require('pagination');
+var pagination = require('./lib/pagination.js');
 import LSService from './storage.js';
 import { renderMovieMarkup } from './renderMovieMarkup';
 import template from '../templates/film-card-li.hbs';
