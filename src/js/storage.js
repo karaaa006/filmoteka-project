@@ -11,7 +11,7 @@ export default class LSService {
       this.watchedArray = [];
     }
 
-    if (JSON.parse(localStorage.getItem('Queue').length)) {
+    if (JSON.parse(localStorage.getItem('Queue'))) {
       let queueArray = JSON.parse(localStorage.getItem('Queue'));
       this.queueArray = queueArray;
     } else {

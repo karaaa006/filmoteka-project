@@ -87,16 +87,8 @@ function onFilmClick(e) {
 
     renderMovieMarckup(d);
     removeSpinner();
-    // console.log(d);
-    let watchedBtn = document.querySelector('.watched_btn');
-    // console.log(watchedBtn)
   });
 }
-
-// function changeToDelete() {
-//   refs.btnWatched.classList.toggle('watched_btn', 'del_watched');
-//   refs.btnWatched.textContent = 'Delete from WATCHED';
-// }
 
 function renderMovieMarckup(movie) {
   const markup = movieTpl(movie);
@@ -123,19 +115,6 @@ refs.modalBackdrop.addEventListener('click', e => {
     btn.textContent = 'Add to queue';
   }
 });
-
-// refs.modalBackdrop.addEventListener('click', e => {
-//   let btn = e.target.closest('button');
-//   if (btn) {
-//     if (btn.classList.contains('watched_btn')) {
-//       addToWatched();
-//       // btn.textContent = 'Delete from WATCHED';
-//     } else if (btn.classList.contains('queue_btn')) {
-//       addToQueue();
-//       // btn.textContent = 'Delete from QUEUE';
-//     }
-//   } else return;
-// });
 
 function addToWatched() {
   let id = lsService.id;
