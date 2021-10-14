@@ -21,7 +21,9 @@ export default {
     paginationButtonsHome.onPageChanged(displayContent);
 
     function displayContent(currentPage) {
-      getModifiedData(movieApi.selectPage(currentPage));
+      movieApi
+        .selectPage(currentPage)
+        .then(movieList => renderMovieMarkup(template, getModifiedData(movieList)));
     }
 
     const pagesContainerRef = document.querySelector('.pagination span');
