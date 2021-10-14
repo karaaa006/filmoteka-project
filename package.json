@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "axios": "^0.22.0",
+    "debounce": "^1.2.1",
     "keen-slider": "^5.5.1",
     "pagination": "github:mayuska/pagination",
     "tui-pagination": "^3.4.1"
