@@ -26,6 +26,7 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
+    "@glidejs/glide": "^3.4.1",
     "axios": "^0.22.0",
     "debounce": "^1.2.1",
     "keen-slider": "^5.5.1",

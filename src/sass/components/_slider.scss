@@ -1,0 +1,114 @@
+@import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
+@import 'node_modules/@glidejs/glide/src/assets/sass/glide.theme';
+
+.slider-wrapper {
+  background-color: rgb(247, 247, 247);
+  padding-bottom: 20px;
+  font-size: 10px;
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.glide__arrow {
+  background-color: #d6eaf8;
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(to right, #9eefe1 0%, #4830f0 51%, #9eefe1 100%);
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+.glide__arrow:hover {
+  background-position: right center;
+}
+
+.slider-card {
+  margin-right: 8px;
+}
+
+.slider-title {
+  font-family: Roboto;
+  text-align: center;
+  margin: 0px;
+  padding-top: 20px;
+  font-size: 30px;
+  line-height: 1.5;
+  font-weight: 700;
+}
+
+.slider-image {
+  border-radius: 5px;
+  height: auto;
+}
+
+.rating-slider {
+  position: absolute;
+  bottom: 0px;
+  right: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 38px;
+  height: 18px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1.1;
+  color: #ffffff;
+  background-color: #ff6b08;
+  border-radius: 5px;
+}
+
+// from trailler
+
+.slider-card .btn-youtube-slider {
+  width: 100px;
+}
+
+.slider-card .overlay-btn-youtube-text {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 19px;
+  width: 70px;
+
+  pointer-events: none;
+  font-family: 'Roboto', sans-serif;
+
+  background-color: rgba(255, 255, 255, 0.8);
+
+  border-radius: 5px;
+  top: 5px;
+  left: 75px;
+  z-index: 2;
+  opacity: 0;
+  transform: translateX(-63%);
+  transition: all 400ms ease-in;
+}
+
+.slider-card:hover .overlay-btn-youtube-text {
+  display: flex;
+  opacity: 1;
+  transform: translateX(-63%);
+}
+
+.btn-youtube-text-slider {
+  position: absolute;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #2b4ac4;
+  cursor: pointer;
+  margin: 0;
+  z-index: 5;
+}
