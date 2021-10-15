@@ -40,11 +40,10 @@ export function getModifiedData(data) {
       m.genre_ids.push('Other');
     }
     m.genre_ids = m.genre_ids.join(', ');
-    if (m.release_date !== undefined) {
+    if (m.release_date) {
       m.release_date = m.release_date.slice(0, 4);
-    } else {
-      m.first_air_date = m.first_air_date.slice(0, 4);
     }
+
     m.vote_average = pad(m.vote_average);
     return m;
   });
