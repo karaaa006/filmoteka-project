@@ -1,7 +1,20 @@
 import FetchApi from './movie_Api.js';
 import { getModifiedData } from './getModifiedData.js';
+import { renderMovieMarkup } from './renderMovieMarkup';
+import template from '../templates/film-card-li.hbs';
+import pagination from './paginationButtons';
 
-const movieApi = new FetchApi();
+const { apiPagination } = pagination;
 
-getModifiedData(movieApi.getPopularMovies())
+export default function getPopularMovies() {
+  const movieApi = new FetchApi();
 
+  const movie = movieApi.getPopularMovies();
+  console.log(movie);
+  movie.then(movieList => {
+    renderMovieMarkup(template, getModifiedData(movieList));
+    apiPagination(movieList, movieApi);
+  });
+}
+
+getPopularMovies();

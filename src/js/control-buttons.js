@@ -1,9 +1,14 @@
 import LSService from './storage';
+import pagination from './paginationButtons';
 const lsService = new LSService();
-
+const { lsPagination } = pagination;
 import { renderMovieMarkup } from './renderMovieMarkup';
 import template from '../templates/film-card-li.hbs';
+import plug from '../templates/plug.hbs';
+import getPortionData from './getPortionData';
+
 const controlButtons = document.querySelector('.dinamic-content');
+const paginationContainer = document.querySelector('.pagination');
 
 export default function changeButtonsColor() {
   showWatchedFilms();
@@ -24,16 +29,30 @@ export default function changeButtonsColor() {
   });
 }
 
-// Вместо этих двух функций должен быть вызов функций по отрисовке библиотеки пользователя
-
 function showWatchedFilms() {
-  console.log('показать просмотренные фильмы');
   let array = lsService.getFromWatchedLS();
-  console.log(array);
-  renderMovieMarkup(template, array);
+  if (!array || array.length === 0) {
+    // Если LS пуст то рисуем заглушку и прячем пагинацию
+    renderMovieMarkup(plug);
+    paginationContainer.classList.add('visually-hidden');
+    return;
+  }
+
+  paginationContainer.classList.remove('visually-hidden');
+  renderMovieMarkup(template, getPortionData(array, 20, 1)); //рендерим первую страницу фильмов
+  lsPagination(array); //добавляем пагинацию
 }
+
 function showQueue() {
-  console.log('показать очередь воспроизведения');
   let array = lsService.getQueueLS();
-  renderMovieMarkup(template, array);
+  if (!array || array.length === 0) {
+    // Если LS пуст то рисуем заглушку и прячем пагинацию
+    renderMovieMarkup(plug);
+    paginationContainer.classList.add('visually-hidden');
+    return;
+  }
+
+  paginationContainer.classList.remove('visually-hidden');
+  renderMovieMarkup(template, getPortionData(array, 20, 1)); //рендерим первую страницу фильмов
+  lsPagination(array); //добавляем пагинацию
 }
