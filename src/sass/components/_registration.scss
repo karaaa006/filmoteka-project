@@ -5,31 +5,33 @@ body {
 
 /* Form Style */
 .form-horizontal {
+  position: relative;
   background: #fff;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   border-radius: 15px;
   text-align: center;
 }
 .form-horizontal .heading {
   display: block;
-  font-size: 35px;
+  font-size: 18px;
   font-weight: 700;
-  padding: 35px 0;
-  border-bottom: 1px solid #f0f0f0;
-  margin-bottom: 30px;
+  padding: 20px 0px 15px 0px;
+  border-bottom: 1px solid $accent-cl;
+  margin-bottom: 10px;
 }
 .form-horizontal .form-group {
   padding: 0 40px;
-  margin: 0 0 25px 0;
+  margin: 10px 0 0px 0;
   position: relative;
 }
+
 .form-horizontal .form-control {
   background: #f0f0f0;
   border: none;
   border-radius: 20px;
   box-shadow: none;
-  padding: 0 20px 0 45px;
-  height: 40px;
+  padding: 0 10px 0 25px;
+  height: 20px;
   transition: all 0.3s ease 0s;
 }
 .form-horizontal .form-control:focus {
@@ -64,11 +66,11 @@ body {
   float: left;
   width: 20px;
   height: 20px;
-  background: #11a3fc;
+  background: $accent-cl;
   border-radius: 50%;
   position: relative;
   margin: 5px 0 0 5px;
-  border: 1px solid #11a3fc;
+  border: 1px solid $accent-cl;
 }
 .form-horizontal .main-checkbox label {
   width: 20px;
@@ -104,19 +106,19 @@ body {
   margin-left: 7px;
   line-height: 20px;
   padding-top: 5px;
-  text-transform: capitalize;
 }
 .form-horizontal .btn {
-  float: right;
   font-size: 14px;
   color: #fff;
-  background: #00b4ef;
+  background: $accent-cl;
   border-radius: 30px;
+  margin-top: 10px;
   padding: 10px 25px;
   border: none;
   text-transform: capitalize;
   transition: all 0.5s ease 0s;
 }
+
 @media only screen and (max-width: 479px) {
   .form-horizontal .form-group {
     padding: 0 25px;
@@ -127,4 +129,37 @@ body {
   .form-horizontal .btn {
     padding: 10px 20px;
   }
+}
+
+.modal__btn-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  background-color: inherit;
+  border-style: none;
+  cursor: pointer;
+
+  &:hover .btn-close-icon,
+  &:focus .btn-close-icon {
+    fill: $accent-cl;
+  }
+}
+
+.form-submit {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-default {
+  margin-right: auto;
+  margin-left: auto;
 }

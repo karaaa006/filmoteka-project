@@ -4,6 +4,7 @@ import './js/renderMovieModal';
 import './js/nav-buttons';
 import './js/getPopularMovies.js';
 import './js/slider';
+import './js/registration';
 
 import paginationButtons from './js/paginationButtons.js';
 
