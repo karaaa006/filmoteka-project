@@ -8,6 +8,8 @@
 @import './base/base';
 @import './utils/mixins';
 @import './utils/utils-classes';
-@import './partials/registration';
-@import './partials/footer';
-@import './film-card_modal';
+@import './components/header_library';
+@import './components/movie-list';
+@import './components/film-card_modal';
+@import './components/footer';
+@import './components/library_plug';

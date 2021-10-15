@@ -1,0 +1,207 @@
+.header {
+  background-color: #000;
+  background-image: url(../images/header_home_bg_phone.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 41px;
+  padding-bottom: 61px;
+  margin-bottom: 60px;
+
+  @include from-none-to-tablet {
+    background-image: url(../images/header_home_bg_tablet.jpg);
+  }
+  @include for-tablet {
+    background-image: url(../images/header_home_bg.jpg);
+  }
+}
+
+.header-library {
+  background-color: #000;
+  background-image: url(../images/header_library_bg_phone.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 41px;
+  padding-bottom: 65px;
+  margin-bottom: 60px;
+
+  @include from-none-to-tablet {
+    background-image: url(../images/header_library_bg_tablet.jpg);
+  }
+  @include for-tablet {
+    background-image: url(../images/header_library_bg.jpg);
+  }
+}
+
+.header-main {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  @include for-tablet {
+    padding-left: 51px;
+    padding-right: 51px;
+  }
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-text {
+  @include from-none-to-tablet {
+    display: none;
+  }
+  @include for-tablet {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: $page-bg-cl;
+    margin-left: 12px;
+  }
+}
+
+.navigation-list {
+  display: flex;
+}
+
+.navigation-list-item:not(:first-child) {
+  margin-left: 39px;
+}
+.navigation-list-item__button {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  color: $page-bg-cl;
+  text-transform: uppercase;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color $transition-style 250ms;
+}
+
+.navigation-list-item__button::after {
+  content: '';
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: transparent;
+  transition: background-color $transition-style 250ms;
+}
+
+.navigation-list-item__button.active::after {
+  background-color: $accent-cl;
+}
+
+.navigation-list-item__button:hover::after {
+  background-color: $page-bg-cl;
+}
+
+.control-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+}
+
+.control-buttons__item {
+  list-style: none;
+}
+
+.control-buttons__item:not(:first-child) {
+  @include from-none-to-tablet {
+    margin-left: 20px;
+  }
+  @include for-tablet {
+    margin-left: 15px;
+  }
+}
+
+.button {
+  color: $page-bg-cl;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid $page-bg-cl;
+  height: 44px;
+  box-shadow: 0 0 10px transparent;
+
+  transition: color $transition-style 250ms, border-color $transition-style 250ms,
+    box-shadow $transition-style 250ms, background-color $transition-style 250ms;
+  @include from-none-to-tablet {
+    width: 129px;
+  }
+  @include for-tablet {
+    width: 135px;
+  }
+}
+
+.button:hover {
+  color: $accent-cl;
+  border-color: $accent-cl;
+  cursor: pointer;
+  box-shadow: 0 0 10px $accent-cl;
+}
+
+.button.active {
+  background-color: $accent-cl;
+  border-color: $accent-cl;
+  color: $page-bg-cl;
+}
+
+.tumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-input-box {
+  position: relative;
+
+  padding-top: 41px;
+  padding-bottom: 32px;
+}
+
+.header-input {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 280px;
+  height: 20px;
+  background-color: inherit;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 0.5px solid #ffffff;
+  color: #ffffff;
+
+  @include for-tablet {
+    width: 336px;
+  }
+
+  &::placeholder {
+    font-size: 14px;
+    line-height: 16px;
+    display: flex;
+    align-items: center;
+
+    color: #ffffff;
+  }
+}
+
+.search-svg {
+  position: absolute;
+  top: 45px;
+  display: inline-block;
+  left: 268px;
+
+  @include for-tablet {
+    left: 324px;
+  }
+}

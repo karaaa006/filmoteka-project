@@ -2,10 +2,10 @@
 $card-magrin: 30px;
 
 // брейкпоинты для экранов
-$phone-sz: 480px;
+$phone-sz: 320px;
 $from-phone-to-tablet: 767px;
 $tablet-sz: 768px;
-$desktop-sz: 1200px;
+$desktop-sz: 1024px;
 
 // Шрифты
 $main-font: 'Roboto', sans-serif;
@@ -21,4 +21,4 @@ $header-transparent-cl: rgba(0, 0, 0, 0.56);
 $error-text-cl: #ff001b;
 
 // Переход
-$transition-style: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-style: cubic-bezier(0.4, 0, 0.2, 1);

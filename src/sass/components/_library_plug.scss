@@ -1,0 +1,20 @@
+.plug {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.plug__img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.plug__title {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+.plug__text {
+  font-size: 20px;
+}
