@@ -3,6 +3,7 @@ import FetchApi from './movie_Api';
 import template from '../templates/film-card-li.hbs';
 import pagination from './paginationButtons';
 import { getModifiedData } from './getModifiedData.js';
+import getPopularMovies from './getPopularMovies';
 
 const { apiPagination } = pagination;
 const debounce = require('lodash.debounce');
@@ -16,6 +17,7 @@ function inputHandler(event) {
   const notification = document.querySelector('.notification');
   if (event.target.value.length === 0) {
     notification.textContent = '';
+    getPopularMovies()
     return;
   }
   const query = new FetchApi();
