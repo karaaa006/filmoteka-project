@@ -125,4 +125,4 @@ var t=arguments[3],e="Expected a function",n=NaN,r="[object Symbol]",i=/^\s+|\s+
 },{"@glidejs/glide":"fGvC","../templates/card-films-slider.hbs":"TGbh","./movie_Api":"ccOE","@glidejs/glide/src/assets/sass/glide.core":"IwtM","@glidejs/glide/src/assets/sass/glide.theme":"IwtM"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/storage"),require("./js/renderMovieModal"),require("./js/nav-buttons"),require("./js/getPopularMovies.js"),require("./js/slider");var e=r(require("./js/paginationButtons.js"));function r(e){return e&&e.__esModule?e:{default:e}}
 },{"./sass/main.scss":"clu1","./js/storage":"qhja","./js/renderMovieModal":"GXRB","./js/nav-buttons":"FKU9","./js/getPopularMovies.js":"cCjI","./js/slider":"wzuc","./js/paginationButtons.js":"v5Ju"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka-project/src.4199c1a8.js.map
+//# sourceMappingURL=/filmoteka-project/src.90d7454a.js.map
