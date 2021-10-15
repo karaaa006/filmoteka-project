@@ -7,9 +7,10 @@ import pagination from './paginationButtons';
 import { getModifiedData } from './getModifiedData.js';
 
 const { apiPagination } = pagination;
+var debounce = require('lodash.debounce')
 
 export default function movieSearch() {
-    input.addEventListener('input', (event) => {
+    input.addEventListener('input', debounce((event) => {
         console.log(event.target.value)
         const query = new FetchApi()
         const queryAnsver = query.searchMovies(event.target.value)
@@ -18,5 +19,6 @@ export default function movieSearch() {
             renderMovieMarkup(template, getModifiedData(movieList));
             apiPagination(movieList, queryAnsver);
         })
-    })
+    }, 500))
 }
+
