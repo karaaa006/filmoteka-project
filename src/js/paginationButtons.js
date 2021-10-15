@@ -1,7 +1,7 @@
 // import movieApi from './movie_Api.js';
 import refs from './refs.js';
 import { getModifiedData } from './getModifiedData.js';
-import pagination from 'pagination';
+var pagination = require('./lib/pagination.js');
 import LSService from './storage.js';
 import { renderMovieMarkup } from './renderMovieMarkup';
 import template from '../templates/film-card-li.hbs';
@@ -21,7 +21,9 @@ export default {
     paginationButtonsHome.onPageChanged(displayContent);
 
     function displayContent(currentPage) {
-      getModifiedData(movieApi.selectPage(currentPage));
+      movieApi
+        .selectPage(currentPage)
+        .then(movieList => renderMovieMarkup(template, getModifiedData(movieList)));
     }
 
     const pagesContainerRef = document.querySelector('.pagination span');

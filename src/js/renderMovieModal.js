@@ -10,8 +10,7 @@ const refs = {
   modalBackdrop: document.querySelector('.backdrop-js'),
   modalCloseBtn: document.querySelector('[data-modal-close]'),
   movieMarkup: document.querySelector('.template-container'),
-  watchedBtn: document.querySelector('.watched_btn'),
-  queueBtn: document.querySelector('.queue_btn'),
+  btnWatched: document.querySelector('.watched_btn'),
 };
 
 let spinner = '';
@@ -38,6 +37,7 @@ function openModal() {
   refs.modalBackdrop.classList.remove('is-hidden');
 
   document.body.style.overflow = 'hidden';
+
   addEventListeners();
 }
 
@@ -66,16 +66,26 @@ function onFilmClick(e) {
 
   const id = Number(e.target.closest('li').dataset.movieId);
   lsService.currentID = id;
+
   spinner = e.target.closest('li').querySelector('.lds-ellipsis');
 
   showSpinner();
   openModal();
+
   api.getMovieInfo(id).then(d => {
+    let watchedArray = lsService.getFromWatchedLS();
+    let queueArray = lsService.getQueueLS();
+
+    if (watchedArray) {
+      if (watchedArray.some(movie => movie.id === d.id)) d.watched = true;
+    }
+
+    if (queueArray) {
+      if (queueArray.some(movie => movie.id === d.id)) d.queue = true;
+    }
+
     renderMovieMarckup(d);
     removeSpinner();
-    console.log(d);
-    let watchedBtn = document.querySelector('.watched_btn');
-    // console.log(watchedBtn)
   });
 }
 
@@ -85,57 +95,34 @@ function renderMovieMarckup(movie) {
 }
 
 refs.modalBackdrop.addEventListener('click', e => {
-  let btn = e.target.closest('button');
-  if (btn) {
-    if (btn.classList.contains('watched_btn')) {
-      addToWatched();
-      btn.setAttribute('disabled', true);
-      // btn.textContent = 'Delete from WATCHED';
-    } else if (btn.classList.contains('queue_btn')) {
-      addToQueue();
-      btn.setAttribute('disabled', true);
-      // btn.textContent = 'Delete from QUEUE';
-    }
-  } else return;
+  let btn = e.target;
+  if (btn.classList.contains('watched_btn')) {
+    lsService.setWatchedToStorage();
+    btn.classList.replace('watched_btn', 'del_watched');
+    btn.textContent = 'Delete from WATCHED';
+  } else if (btn.classList.contains('del_watched')) {
+    lsService.delFromWatched();
+    btn.classList.replace('del_watched', 'watched_btn');
+    btn.textContent = 'Add to watched';
+  } else if (btn.classList.contains('queue_btn')) {
+    lsService.setQueueToStorage();
+    btn.classList.replace('queue_btn', 'del_queue');
+    btn.textContent = 'Delete from QUEUE';
+  } else if (btn.classList.contains('del_queue')) {
+    lsService.delFromQueue();
+    btn.classList.replace('del_queue', 'queue_btn');
+    btn.textContent = 'Add to queue';
+  }
 });
-
-// refs.modalBackdrop.addEventListener('click', e => {
-//   let btn = e.target.closest('button');
-//   if (btn) {
-//     if (btn.classList.contains('watched_btn')) {
-//       addToWatched();
-//       // btn.textContent = 'Delete from WATCHED';
-//     } else if (btn.classList.contains('queue_btn')) {
-//       addToQueue();
-//       // btn.textContent = 'Delete from QUEUE';
-//     }
-//   } else return;
-// });
-
-function addToWatched() {
-  let id = lsService.id;
-  lsService.setWatchedToStorage(id);
-}
-
-// function deleteFromWatched() {
-//   let id = lsService.id;
-//   lsService.deleteMovieFromLS(id);
-// }
-
-function addToQueue() {
-  let id = lsService.id;
-  lsService.setQueueToStorage(id);
-  // refs.queueBtn.setAttribute('disabled', true);
-}
 
 function showSpinner() {
   spinner.classList.remove('non-active');
-  console.log(spinner);
+  // console.log(spinner);
   // видалити консоль пысля перевырки
 }
 
 function removeSpinner() {
   spinner.classList.add('non-active');
-  console.log(spinner);
+  // console.log(spinner);
   // видалити консоль пысля перевырки
 }

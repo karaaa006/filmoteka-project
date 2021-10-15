@@ -1,14 +1,13 @@
 import input from '../templates/header-input.hbs';
 import buttons from '../templates/header-buttons.hbs';
 import changeButtonsColor from './control-buttons';
-import FetchApi from './movie_Api.js';
-import { getModifiedData } from './getModifiedData.js';
-
+import getPopularMovies from './getPopularMovies';
 
 const homeButton = document.querySelector('#home');
 const myLybraryButton = document.querySelector('#my_lybrary');
 const dinamicContent = document.querySelector('.dinamic-content');
 const header = document.querySelector('.header');
+const paginationContainer = document.querySelector('.pagination');
 
 function navButtons() {
   dinamicContent.insertAdjacentHTML('beforeend', input());
@@ -38,6 +37,6 @@ function onHomeButtonClick() {
   homeButton.classList.add('active');
   header.classList.remove('header-library');
   header.classList.add('header');
-  const movieApi = new FetchApi();
-  getModifiedData(movieApi.getPopularMovies())
+  paginationContainer.classList.remove('visually-hidden');
+  getPopularMovies();
 }
