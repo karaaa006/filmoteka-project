@@ -1,34 +1,34 @@
 import Glide from '@glidejs/glide';
 import filmsCardSliderTpl from '../templates/card-films-slider.hbs';
-//import trailer from './trailers.js';
+import movieApi from './movie_Api';
+import '@glidejs/glide/src/assets/sass/glide.core';
+import '@glidejs/glide/src/assets/sass/glide.theme';
 const sliderContainer = document.querySelector('.js-slider-container');
-renderTrendy();
 
 const glide = new Glide('.glide', {
   type: 'slider',
   startAt: 0,
   perView: 8,
-  autoplay: 2000,
+  autoplay: 3000,
   hoverpause: true,
   bound: true,
 });
 
 glide.mount();
+const api = new movieApi();
+sliderContainer.addEventListener('click', e => {
+  if (e.target.nodeName !== 'BUTTON') return;
+
+  const id = e.target.dataset.id;
+
+  api.getMovieInfo(id).then(d => console.log(d));
+});
 
 function renderTrendy() {
-  const url = `https://api.themoviedb.org/3/trending/all/day?api_key=c4da2d26df740b651b6bb4b7cba32696`;
-  return fetch(url)
-    .then(response => response.json())
-    .then(({ results }) => {
-      return results;
-    })
-    .then(renderSliderFilms)
-    .catch(err => {
-      //sliderContainer.innerHTML = `<img class="catch-error-pagination" src="${errorUrl}" />`;
-    });
+  api.getUpcomingMovies().then(d => renderSliderFilms(d.results));
 }
+renderTrendy();
 
 function renderSliderFilms(articles) {
   sliderContainer.innerHTML = filmsCardSliderTpl(articles);
-  trailer.createTrailerLink(document.querySelectorAll('.btn-youtube-slider'));
 }
