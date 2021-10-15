@@ -2,9 +2,11 @@
 <li class="movie-list__card" data-movie-id="{{id}}" id="film-card-template">
 
 <div class="card-img__thumb">
-    
-  <img class="movie-img" loading="lazy" srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 1x, https://image.tmdb.org/t/p/w780{{poster_path}} 2x" 
-  src="https://image.tmdb.org/t/p/w342{{poster_path}}" alt="{{#if title}}{{title}}{{else}}{{name}}{{/if}}">
+    {{#if poster_path}}<img class="movie-img" loading="lazy"
+      srcset="https://image.tmdb.org/t/p/w342{{poster_path}} 1x, https://image.tmdb.org/t/p/w780{{poster_path}} 2x"
+      src="https://image.tmdb.org/t/p/w342{{poster_path}}" alt="{{#if title}}{{title}}{{else}}{{name}}{{/if}}">
+      {{else}}<img class="movie-img" loading="lazy" src="https://allmovies.tube/assets/img/no-poster.png" alt="No poster">
+    {{/if}}
 </div>
 
 <div class="card__content">
@@ -14,12 +16,12 @@
   <h3 class="card__title">{{name}}</h3>
   {{/if}}
   <p class="card__info">
-    <span class="genres-list" title="{{genre_ids}}">{{genre_ids}}</span>
+    {{#if genre_ids}}<span class="genres-list" title="{{genre_ids}}">{{genre_ids}}</span>
+      {{else}}<span class="genres-list">----</span>
+    {{/if}}
     <span class="line"></span>
-    {{#if release_date}}
-    <span class="movie-date">{{release_date}}</span>
-    {{else}}
-    <span class="movie-date">{{first_air_date}}</span>
+    {{#if release_date}}<span class="movie-date">{{release_date}}</span>
+      {{else}}<span class="movie-date">----</span>
     {{/if}}
     <span class="movie-rating">{{vote_average}}</span>
   </p>
