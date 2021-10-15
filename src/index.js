@@ -18,3 +18,8 @@ import paginationButtons from './js/paginationButtons.js';
 // request.getPopularMovies().then(d => console.log('Популярные фильмы: ', d));
 // request.getMovieInfo('122').then(d => console.log('Информация о фильме по ID: ', d));
 // request.getUpcomingMovies().then(d => console.log('Скоро в кино: ', d));
+
+
+import movieSearch from './js/moviesSearch'
+
+movieSearch()
