@@ -20,6 +20,4 @@ import paginationButtons from './js/paginationButtons.js';
 // request.getUpcomingMovies().then(d => console.log('Скоро в кино: ', d));
 
 
-import movieSearch from './js/moviesSearch'
 
-movieSearch()

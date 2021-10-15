@@ -208,3 +208,14 @@
     left: 324px;
   }
 }
+
+.notification {
+  display: flex;
+  justify-content: center;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  color: $error-text-cl;
+}
