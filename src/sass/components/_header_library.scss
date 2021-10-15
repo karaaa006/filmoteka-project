@@ -161,6 +161,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .header-input-box {
@@ -210,12 +211,24 @@
 }
 
 .notification {
-  display: flex;
-  justify-content: center;
+  display: inline-block;
+  position: absolute;
   font-family: Roboto;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
   line-height: 16px;
   color: $error-text-cl;
+
+  @include from-none-to-tablet {
+    bottom: -22px;
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  @include for-tablet {
+    width: 100%;
+    bottom: 0px;
+    text-align: center;
+  }
 }
