@@ -189,6 +189,9 @@
 .btn-container {
   display: flex;
   flex-wrap: nowrap;
+  @include from-none-to-tablet {
+    justify-content: center;
+  }
 }
 
 .modal-btn:not(:last-child) {
@@ -196,7 +199,22 @@
 }
 
 .modal-btn {
+  font-size: 12px;
+  width: 113px;
+  height: 44px;
   padding: 13px 8px;
+
+  @include from-none-to-tablet {
+    padding: 5px 8px;
+  }
+
+  @include for-tablet {
+    width: 125px;
+  }
+
+  @include for-desktop {
+    width: 136px;
+  }
 
   text-transform: uppercase;
   font-weight: 500;
@@ -206,10 +224,64 @@
   border: 1px solid #000000;
   border-radius: 5px;
   cursor: pointer;
+
+  transition: color $transition-style 250ms, background-color $transition-style 250ms,
+    border-color $transition-style 250ms, box-shadow $transition-style 250ms;
 }
 
 .watched_btn {
+  height: 44px;
+  width: 113px;
+  padding: 13px 8px;
+
+  @include from-none-to-tablet {
+    padding: 5px 8px;
+  }
+
+  @include for-tablet {
+    width: 125px;
+  }
+
+  @include for-desktop {
+    width: 136px;
+  }
   background-color: $accent-cl;
   border: 1px solid $accent-cl;
   color: #ffffff;
+  &:hover {
+    border-color: $accent-cl;
+    cursor: pointer;
+    box-shadow: 0 0 10px $accent-cl;
+  }
+}
+
+.queue_btn {
+  height: 44px;
+
+  @include for-tablet {
+    width: 113px;
+    width: 125px;
+  }
+
+  @include for-desktop {
+    width: 136px;
+  }
+
+  &:hover {
+    border-color: $accent-cl;
+    box-shadow: 0 0 10px $accent-cl;
+  }
+}
+
+.del_watched,
+.del_queue {
+  padding: 8px;
+  background-color: rgb(187, 50, 8);
+  border: 1px solid rgb(187, 50, 8);
+  color: #ffffff;
+  &:hover {
+    border-color: rgb(187, 50, 8);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgb(187, 50, 8);
+  }
 }
