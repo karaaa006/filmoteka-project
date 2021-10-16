@@ -224,6 +224,9 @@
   border: 1px solid #000000;
   border-radius: 5px;
   cursor: pointer;
+
+  transition: color $transition-style 250ms, background-color $transition-style 250ms,
+    border-color $transition-style 250ms, box-shadow $transition-style 250ms;
 }
 
 .watched_btn {
@@ -263,9 +266,9 @@
   @include for-desktop {
     width: 136px;
   }
+
   &:hover {
     border-color: $accent-cl;
-    cursor: pointer;
     box-shadow: 0 0 10px $accent-cl;
   }
 }
@@ -276,7 +279,6 @@
   background-color: rgb(187, 50, 8);
   border: 1px solid rgb(187, 50, 8);
   color: #ffffff;
-  cursor: pointer;
   &:hover {
     border-color: rgb(187, 50, 8);
     cursor: pointer;
