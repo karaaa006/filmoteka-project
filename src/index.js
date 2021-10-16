@@ -1,9 +1,9 @@
 import './sass/main.scss';
-
+import '../node_modules/basiclightbox/dist/basicLightbox.min.css';
 import './js/renderMovieModal';
 import './js/nav-buttons';
 import './js/getPopularMovies.js';
-
+import './js/students.js';
 // import requestApi from './js/movie_Api';
 // import genres_decoder from './js/genres_decoder';
 // import changeButtonsColor from './js/control-buttons';

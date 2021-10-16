@@ -1,67 +1,74 @@
 .footer {
-  font-family: $main-font;
-  font-size: 16px;
-  line-height: 1.1875;
-
-  display: flex;
-  align-items: center;
-
-  background-color: $secondary-bg-cl;
-  color: $footer-text-cl;
-  padding-top: 30px;
-  padding-bottom: 28px;
-
-  @media screen and (min-width: $phone-sz) {
-    padding-top: 29px;
-    padding-bottom: 30px;
-  }
+  flex-shrink: 0;
+  background-color: #f7f7f7;
 }
 
-.footer__flex {
+.page__footer {
+  text-align: center;
+}
+
+.footer__icon-wrapper {
   display: flex;
   justify-content: center;
-  padding: 0px;
-  @media screen and (max-width: $phone-sz) {
-    flex-direction: column;
-    margin-right: auto;
-    margin-left: auto;
+  align-items: center;
+}
+
+.footer__icon {
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+  margin-left: 10px;
+  fill: #ff6b08;
+
+  animation: heartbeat 1s infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.25) translateX(5%) translateY(5%);
+  }
+  40% {
+    transform: scale(1.5) translateX(9%) translateY(10%);
   }
 }
 
-.footer__text {
-  margin-right: 5px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.footer__developed {
-  display: flex;
-  @media screen and (max-width: $phone-sz) {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 10px;
-  }
-}
-
-.footer__developed-text {
-  margin-right: 10px;
-}
-
-#footer__icon {
-  margin-right: 10px;
-}
-
-.footer__developed-link {
-  display: flex;
-}
-.footer__link {
-  display: flex;
-  color: inherit;
+.dev__link {
   text-decoration: underline;
-  margin-left: 4px;
+  cursor: pointer;
 }
 
-.footer__link:hover,
-.footer__link:focus {
-  color: $accent-cl;
+@media screen and(min-width: 320px) {
+  .footer {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .footer__text {
+    color: #545454;
+    font-size: 14px;
+    line-height: 1.143;
+  }
+
+  .copyright {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and(min-width: 768px) {
+  .page__footer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .footer__text {
+    font-size: 16px;
+    line-height: 1.1875;
+  }
+
+  .copyright {
+    margin-bottom: 0;
+  }
 }

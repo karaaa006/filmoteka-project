@@ -1,0 +1,16 @@
+<div class='students-container'>
+  <ul class='students-list'>
+    {{#each this}}
+      <li class='students-item'>
+        <div class='students-photo photo-{{id}}'></div>
+        <div class='students-content'>
+          <p class='students-name'>{{name}}</p>
+          <p class='students-role'>{{role}}</p>
+          <a class='students-linkedin link' href='{{urlLinkedin}}' target='_blank'></a>
+          <a class='students-gmail link' href='{{urlGmail}}' target='_blank'></a>
+          <a class='students-github link' href='{{urlGithub}}' target='_blank'></a>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>
