@@ -23,7 +23,8 @@
     {{#if release_date}}<span class="movie-date">{{release_date}}</span>
       {{else}}<span class="movie-date">----</span>
     {{/if}}
-    {{#if vote_average}}<span class="movie-rating">{{vote_average}}</span>
+    
+    {{#if vote_average}}<span class="movie-rating {{rating_color}}">{{vote_average}}</span>
       {{else}}<span class="movie-rating">-</span>
     {{/if}}
   </p>

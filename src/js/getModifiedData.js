@@ -50,6 +50,12 @@ export function getModifiedData(data) {
       m.vote_average = pad(m.vote_average);
     }
 
+    if (m.vote_average <= 3) m.rating_color = 'red-rating-cl';
+    if (m.vote_average > 3 && m.vote_average <= 5) m.rating_color = 'yellow-rating-cl';
+    if (m.vote_average > 5 && m.vote_average <= 8) m.rating_color = 'yellow-green-rating-cl';
+    if (m.vote_average > 8) m.rating_color = 'green-rating-cl';
+
+    m.vote_average = pad(m.vote_average);
     return m;
   });
 
