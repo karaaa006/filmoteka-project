@@ -11,21 +11,19 @@
 }
 
 .glide__arrow {
-  background-color: #d6eaf8;
-  text-decoration: none;
-  display: inline-block;
+  background-color: #efbc9e;
   font-size: 10px;
   color: #ffffff;
-  border-radius: 10px;
   text-transform: uppercase;
   letter-spacing: 2px;
   background-image: linear-gradient(to right, #efbc9e 0%, $accent-cl 51%, #efbc9e 100%);
   background-size: 200% auto;
-  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.8);
-  transition: 0.5s;
+  background-position: 0 0;
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.5);
+  transition: background-position $transition-style 500ms;
 }
 .glide__arrow:hover {
-  background-position: right center;
+  background-position: 100%;
 }
 
 .slider-card {

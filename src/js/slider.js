@@ -16,13 +16,6 @@ const glide = new Glide('.glide', {
 
 glide.mount();
 const api = new movieApi();
-sliderContainer.addEventListener('click', e => {
-  if (e.target.nodeName !== 'BUTTON') return;
-
-  const id = e.target.dataset.id;
-
-  api.getMovieInfo(id).then(d => console.log(d));
-});
 
 function renderTrendy() {
   api.getUpcomingMovies().then(d => renderSliderFilms(d.results));
