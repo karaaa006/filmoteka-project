@@ -7,7 +7,7 @@ import { renderMovieMarkup } from './renderMovieMarkup';
 import template from '../templates/film-card-li.hbs';
 import getPortionData from './getPortionData';
 
-const { paginationContainerRef } = refs;
+const { paginationContainerRef, movieListRef } = refs;
 
 export default {
   apiPagination: function (movieList, movieApi) {
@@ -26,7 +26,7 @@ export default {
         .then(movieList => renderMovieMarkup(template, getModifiedData(movieList)));
 
       window.scrollTo({
-        top: 0,
+        top: movieListRef.offsetTop,
         behavior: 'smooth',
       });
     }
