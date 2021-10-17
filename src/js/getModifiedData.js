@@ -44,7 +44,12 @@ export function getModifiedData(data) {
       m.release_date = m.release_date.slice(0, 4);
     }
 
-    m.vote_average = pad(m.vote_average);
+    if (m.vote_average === 0) {
+      m.vote_average = false;
+    } else {
+      m.vote_average = pad(m.vote_average);
+    }
+
     return m;
   });
 

@@ -11,8 +11,9 @@
         onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';"
       />
 
-      {{#if vote_average}}<span class='rating-slider'>{{vote_average}}</span>
-      {{else}}
+      {{#if vote_average}}
+        <span class='rating-slider'>{{vote_average}}</span>
+      {{else}}<span class='rating-slider'>-</span>
       {{/if}}
     </div>
   </li>

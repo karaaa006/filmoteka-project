@@ -10,7 +10,7 @@ export default function getPopularMovies() {
   const movieApi = new FetchApi();
 
   const movie = movieApi.getPopularMovies();
-  console.log(movie);
+
   movie.then(movieList => {
     renderMovieMarkup(template, getModifiedData(movieList));
     apiPagination(movieList, movieApi);
