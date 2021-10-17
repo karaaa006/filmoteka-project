@@ -6,3 +6,4 @@ import './js/nav-buttons';
 import './js/getPopularMovies.js';
 import './js/slider';
 import './js/paginationButtons.js';
+import './js/firebaseUserMenu';

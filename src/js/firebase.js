@@ -9,6 +9,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   setPersistence,
+  browserLocalPersistence,
 } from 'firebase/auth';
 
 // Your web app's Firebase configuration
@@ -55,24 +56,34 @@ export async function setData(field, data) {
 }
 const api1 = new api();
 
-document.querySelector('#test').addEventListener('click', () => {
-  const moviesArray = [];
-  getData().then(d => {
-    if (d) {
-      const moviesArray = JSON.parse(d.watched);
-      api1.getMovieInfo('11').then(movie => {
-        moviesArray.push(movie);
-        setData('watched', JSON.stringify(moviesArray));
-      });
-      return;
-    }
+// document.querySelector('#test').addEventListener('click', () => {
+//   const moviesArray = [];
+//   getData().then(d => {
+//     if (d) {
+//       const moviesArray = JSON.parse(d.watched);
+//       api1.getMovieInfo('11').then(movie => {
+//         moviesArray.push(movie);
+//         setData('watched', JSON.stringify(moviesArray));
+//       });
+//       return;
+//     }
 
-    api1.getMovieInfo('11').then(movie => {
-      moviesArray.push(movie);
-      setData('watched', JSON.stringify(moviesArray));
-    });
-  });
-});
+//     api1.getMovieInfo('11').then(movie => {
+//       moviesArray.push(movie);
+//       setData('watched', JSON.stringify(moviesArray));
+//     });
+//   });
+// });
+export function isSignin() {
+  console.log(getAuth().currentUser);
+  if (getAuth().currentUser) return true;
+
+  return false;
+}
+
+export function getUserName() {
+  return getAuth().currentUser;
+}
 
 export async function login() {
   signInWithPopup(auth, provider)
@@ -81,7 +92,9 @@ export async function login() {
       const token = credential.accessToken;
       const user = result.user;
       console.log(user);
-      setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+      console.log(getUserName());
+
+      setPersistence(auth, browserLocalPersistence)
         .then(() => {
           console.log('ok');
         })
@@ -115,6 +128,6 @@ document.querySelector('#login').addEventListener('click', () => {
   login();
 });
 
-document.querySelector('#logout').addEventListener('click', () => {
-  logout();
-});
+// document.querySelector('#logout').addEventListener('click', () => {
+//   logout();
+// });
