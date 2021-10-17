@@ -31,9 +31,6 @@
 .footer__text {
   margin-right: auto;
   margin-left: auto;
-  @include for-tablet {
-    margin-right: 5px;
-  }
 }
 
 .footer__developed {
@@ -53,10 +50,9 @@
   display: flex;
 }
 .footer__link {
-  display: flex;
+  cursor: pointer;
   color: inherit;
   text-decoration: underline;
-  margin-left: 4px;
 }
 
 .footer__link:hover,
