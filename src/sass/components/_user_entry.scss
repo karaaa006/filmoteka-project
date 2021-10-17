@@ -1,0 +1,21 @@
+.additions {
+    
+  margin-top: 20px;
+    
+
+}
+  
+.additions-list {
+
+  text-align: center;
+}
+
+.addition-item:not(:last-child) {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.log_in-link {
+  margin-left: 3px;
+  cursor: pointer;
+}
