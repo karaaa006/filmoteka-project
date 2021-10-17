@@ -25,7 +25,17 @@ sliderContainer.addEventListener('click', e => {
 });
 
 function renderTrendy() {
-  api.getUpcomingMovies().then(d => renderSliderFilms(d.results));
+  api.getUpcomingMovies().then(d => {
+    d.results.map(movie => {
+      if (Number(movie.vote_average) === 0) {
+        movie.vote_average = false;
+      } else {
+        movie.vote_average = movie.vote_average.toFixed(1);
+      }
+    });
+
+    renderSliderFilms(d.results);
+  });
 }
 renderTrendy();
 
