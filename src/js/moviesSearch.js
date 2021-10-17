@@ -28,6 +28,8 @@ fetchMovies(event.target.value)
 }
 
 export function fetchMovies(moviesName) {
+  const notification = document.querySelector('.notification');
+  notification.textContent = ''
   const query = new FetchApi();
   const queryAnsver = query.searchMovies(moviesName);
   queryAnsver.then(movieList => {
@@ -37,6 +39,8 @@ export function fetchMovies(moviesName) {
       inputLikeGoogle(movieList.results)
       return;
     }
+    const searchResults = document.querySelector('.search-results')
+    searchResults.innerHTML = ''
     notification.textContent =
       'Search result not successful. Enter the correct movie name and try again';
   });
