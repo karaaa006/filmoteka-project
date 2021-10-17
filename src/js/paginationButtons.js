@@ -24,6 +24,11 @@ export default {
       movieApi
         .selectPage(currentPage)
         .then(movieList => renderMovieMarkup(template, getModifiedData(movieList)));
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     }
 
     const pagesContainerRef = document.querySelector('.pagination span');
