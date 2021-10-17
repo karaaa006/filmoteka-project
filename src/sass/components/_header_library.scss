@@ -240,16 +240,19 @@
 .search-results {
   display: flex;
   position: absolute;
+  border-radius: 0 0 5px 5px;
+  overflow: hidden;
   flex-wrap: wrap;
   flex-direction: column;
-  bottom: -50px;
+  bottom: -57px;
 }
 
 .search-results__item {
   display: block;
-  background-color: #ffffff;
-  height: 20px;
-  color: $accent-cl;
+  padding: 4px 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+
+  color: #fff;
   font-weight: 500;
   font-size: 12px;
   line-height: 14px;
@@ -268,7 +271,7 @@
 }
 
 .search-results__item:hover {
-  background-color: $accent-cl;
-  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000000;
   cursor: pointer;
 }
