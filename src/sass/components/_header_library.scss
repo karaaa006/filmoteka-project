@@ -236,3 +236,39 @@
 .notification.success {
   color: #ffffff;
 }
+
+.search-results {
+  display: flex;
+  position: absolute;
+  flex-wrap: wrap;
+  flex-direction: column;
+  bottom: -50px;
+}
+
+.search-results__item {
+  display: block;
+  background-color: #ffffff;
+  height: 20px;
+  color: $accent-cl;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+
+  @include from-none-to-tablet {
+    bottom: -22px;
+    width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include for-tablet {
+    width: 336px;
+    bottom: 0px;
+  }
+}
+
+.search-results__item:hover {
+  background-color: $accent-cl;
+  color: #ffffff;
+  cursor: pointer;
+}

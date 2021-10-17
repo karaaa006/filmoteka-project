@@ -2,7 +2,7 @@ import input from '../templates/header-input.hbs';
 import buttons from '../templates/header-buttons.hbs';
 import changeButtonsColor from './control-buttons';
 import getPopularMovies from './getPopularMovies';
-import movieSearch from './moviesSearch';
+import { movieSearch } from './moviesSearch';
 
 const homeButton = document.querySelector('#home');
 const myLybraryButton = document.querySelector('#my_lybrary');
