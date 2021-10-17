@@ -2,6 +2,7 @@ import input from '../templates/header-input.hbs';
 import buttons from '../templates/header-buttons.hbs';
 import changeButtonsColor from './control-buttons';
 import getPopularMovies from './getPopularMovies';
+import movieSearch from './moviesSearch';
 
 const homeButton = document.querySelector('#home');
 const myLybraryButton = document.querySelector('#my_lybrary');
@@ -13,6 +14,7 @@ const carouselRef = document.querySelector('.slider-wrapper')
 function navButtons() {
   dinamicContent.insertAdjacentHTML('beforeend', input());
   myLybraryButton.addEventListener('click', onLibraryButtonClick);
+  movieSearch()
 }
 
 navButtons();
@@ -41,5 +43,6 @@ function onHomeButtonClick() {
   header.classList.add('header');
   paginationContainer.classList.remove('visually-hidden');
   carouselRef.classList.remove('visually-hidden');
-  getPopularMovies();
+  getPopularMovies()
+  movieSearch();
 }
