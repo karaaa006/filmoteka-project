@@ -6,5 +6,11 @@ import './js/renderMovieModal';
 import './js/nav-buttons';
 import './js/getPopularMovies.js';
 import './js/students';
+import FetchApi from './js/movie_Api';
+import './js/treiler';
 
 import './js/paginationButtons';
+
+const api = new FetchApi();
+
+console.log(api.getTrailerLink(11));

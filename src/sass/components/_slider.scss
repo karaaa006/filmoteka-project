@@ -92,3 +92,15 @@
 .slider-card:focus .movie-name-slider {
   opacity: 1;
 }
+
+.trailer-btn {
+  position: absolute;
+  padding: 0;
+  top: 5px;
+  right: 5px;
+
+  background-color: transparent;
+  border: none;
+
+  cursor: pointer;
+}
