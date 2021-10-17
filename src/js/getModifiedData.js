@@ -69,7 +69,13 @@ export function getModifiedDataLS(data) {
   } else {
     data.first_air_date = data.first_air_date.slice(0, 4);
   }
-  data.vote_average = pad(data.vote_average);
+
+  if (data.vote_average === 0) {
+    data.vote_average = false;
+  } else {
+    data.vote_average = pad(data.vote_average);
+  }
+
   console.log(data);
   return data;
 }
