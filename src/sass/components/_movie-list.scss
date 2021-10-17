@@ -109,7 +109,6 @@
   text-align: center;
 
   color: #fff;
-  background-color: $accent-cl;
 }
 
 .pagination {
@@ -212,4 +211,20 @@
 
 .non-active {
   display: none;
+}
+
+.red-rating-cl {
+  background-color: rgb(192, 13, 13);
+}
+
+.yellow-rating-cl {
+  background-color: rgb(214, 214, 14);
+}
+
+.yellow-green-rating-cl {
+  background-color: rgb(130, 177, 37);
+}
+
+.green-rating-cl {
+  background-color: rgb(19, 129, 19);
 }
