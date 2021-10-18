@@ -39,7 +39,6 @@ function showWatchedFilms() {
   }
 
   paginationContainer.classList.remove('visually-hidden');
-  console.log(array);
   renderMovieMarkup(template, getPortionData(array, 20, 1)); //рендерим первую страницу фильмов
   lsPagination(array); //добавляем пагинацию
 }
