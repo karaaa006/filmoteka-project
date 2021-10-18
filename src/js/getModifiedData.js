@@ -4,6 +4,8 @@ import { renderMovieMarkup } from './renderMovieMarkup.js';
 import template from '../templates/film-card-li.hbs';
 
 function pad(value) {
+  if (value === 10) return value;
+
   return String(value).padEnd(3, '.0');
 }
 
@@ -26,12 +28,12 @@ export function getModifiedData(data) {
       if (m.vote_average > 3 && m.vote_average <= 5) m.rating_color = 'yellow-rating-cl';
       if (m.vote_average > 5 && m.vote_average <= 8) m.rating_color = 'yellow-green-rating-cl';
       if (m.vote_average > 8) m.rating_color = 'green-rating-cl';
-      m.vote_average = pad(m.vote_average);
+      m.vote_average = m.vote_average.toFixed(1);
     }
 
     return m;
   });
-  console.log(modifiedData);
+
   return modifiedData;
 }
 
@@ -57,7 +59,7 @@ export function getModifiedDataLS(data) {
     if (data.vote_average > 5 && data.vote_average <= 8)
       data.rating_color = 'yellow-green-rating-cl';
     if (data.vote_average > 8) data.rating_color = 'green-rating-cl';
-    data.vote_average = pad(data.vote_average);
+    data.vote_average = data.vote_average.toFixed(1);
   }
 
   return data;
