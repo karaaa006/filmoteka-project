@@ -34,7 +34,7 @@ function removeEventListeners() {
 }
 
 function openModal() {
-  refs.modalBackdrop.classList.remove('is-hidden');
+  refs.modalBackdrop.classList.remove('visually-hidden');
 
   document.body.style.overflow = 'hidden';
 
@@ -42,7 +42,7 @@ function openModal() {
 }
 
 function closeModal() {
-  refs.modalBackdrop.classList.add('is-hidden');
+  refs.modalBackdrop.classList.add('visually-hidden');
   document.body.style.overflow = '';
   removeEventListeners();
 }
