@@ -13,8 +13,35 @@
 .plug__title {
   font-size: 30px;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .plug__text {
   font-size: 20px;
+}
+
+.homepage-btn {
+  padding: 15px;
+
+  font-size: 14px;
+  text-decoration: none;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+
+  @include from-none-to-tablet {
+    font-size: 16px;
+  }
+
+  background-color: $accent-cl;
+
+  transition: box-shadow $transition-style 250ms;
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 0 10px #ff6b01;
+  }
 }
