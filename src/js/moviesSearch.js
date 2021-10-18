@@ -12,18 +12,27 @@ export let findedMovies = [];
 
 export function movieSearch() {
   const input = document.querySelector('.header-input');
+  const searchResults = document.querySelector('.search-results');
   input.addEventListener('input', debounce(inputHandler, 500));
 }
 
 async function inputHandler(event) {
   const notification = document.querySelector('.notification');
+  const searchResults = document.querySelector('.search-results');
   if (event.target.value.length === 0) {
     notification.textContent = '';
     searchResults.innerHTML = '';
     getPopularMovies();
     return;
   }
-  fetchMovies(event.target.value);
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Enter') {
+      searchResults.innerHTML = '';
+      fetchMovies(event.target.value);
+    }
+    return
+  })
+  pleaseGoFetch(event.target.value)
 }
 
 export function fetchMovies(moviesName) {
@@ -35,7 +44,6 @@ export function fetchMovies(moviesName) {
     if (movieList.total_results !== 0) {
       renderMovieMarkup(template, getModifiedData(movieList));
       apiPagination(movieList, query);
-      inputLikeGoogle(movieList.results);
       return;
     }
     const searchResults = document.querySelector('.search-results');
@@ -44,3 +52,14 @@ export function fetchMovies(moviesName) {
       'Search result not successful. Enter the correct movie name and try again';
   });
 }
+
+
+function pleaseGoFetch(movieName) {
+  const query = new FetchApi();
+  const queryAnsver = query.searchMovies(movieName);
+    queryAnsver.then(movieList => {
+      console.dir(movieList)
+      inputLikeGoogle(movieList.results)
+  });
+}
+

@@ -1,4 +1,3 @@
-import { fetchMovie } from './moviesSearch';
 import FetchApi from './movie_Api';
 import { renderMovieMarkup } from './renderMovieMarkup';
 import { getModifiedData } from './getModifiedData.js';
@@ -13,7 +12,6 @@ export default function inputLikeGoogle(query) {
   const movieList = [];
 
   for (let i = 0; i < 4; i++) {
-    console.log(query[i]);
     movieList.push(`<p class="search-results__item">${query[i].title}</p>`);
   }
 
