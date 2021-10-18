@@ -36,7 +36,7 @@ export default class LSService {
 
     const info = await getModifiedDataLS(object);
 
-    this.watchedArray.push(info);
+    this.watchedArray.unshift(info);
     try {
       localStorage.setItem('Watched', JSON.stringify(this.watchedArray));
     } catch (err) {
@@ -65,7 +65,7 @@ export default class LSService {
   async setQueueToStorage() {
     const array = await fetchApi.getMovieInfo(this.id);
     const info = await getModifiedDataLS(array);
-    this.queueArray.push(info);
+    this.queueArray.unshift(info);
     try {
       localStorage.setItem('Queue', JSON.stringify(this.queueArray));
     } catch (err) {
