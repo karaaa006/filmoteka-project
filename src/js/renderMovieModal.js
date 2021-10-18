@@ -5,6 +5,9 @@ import _debounce from 'debounce';
 const api = new movie_Api();
 const lsService = new LSService();
 
+import { showWatchedFilms } from './control-buttons';
+import { showQueue } from './control-buttons';
+
 const refs = {
   filmCard: document.querySelector('.movie-list'),
   modalBackdrop: document.querySelector('.backdrop-js'),
@@ -84,10 +87,10 @@ function onFilmClick(e) {
       if (queueArray.some(movie => movie.id === d.id)) d.queue = true;
     }
 
-      if (d.vote_average <= 3) d.rating_color = 'red-rating-cl';
-      if (d.vote_average > 3 && d.vote_average <= 5) d.rating_color = 'yellow-rating-cl';
-      if (d.vote_average > 5 && d.vote_average <= 8) d.rating_color = 'yellow-green-rating-cl';
-      if (d.vote_average > 8) d.rating_color = 'green-rating-cl';
+    if (d.vote_average <= 3) d.rating_color = 'red-rating-cl';
+    if (d.vote_average > 3 && d.vote_average <= 5) d.rating_color = 'yellow-rating-cl';
+    if (d.vote_average > 5 && d.vote_average <= 8) d.rating_color = 'yellow-green-rating-cl';
+    if (d.vote_average > 8) d.rating_color = 'green-rating-cl';
 
     renderMovieMarckup(d);
     removeSpinner();
@@ -101,6 +104,7 @@ function renderMovieMarckup(movie) {
 
 refs.modalBackdrop.addEventListener('click', e => {
   let btn = e.target;
+
   if (btn.classList.contains('watched_btn')) {
     lsService.setWatchedToStorage();
     btn.classList.replace('watched_btn', 'del_watched');
@@ -109,6 +113,12 @@ refs.modalBackdrop.addEventListener('click', e => {
     lsService.delFromWatched();
     btn.classList.replace('del_watched', 'watched_btn');
     btn.textContent = 'Add to watched';
+
+    if (
+      document.querySelector('.navigation-list-item__button.active').textContent === 'My library'
+    ) {
+      showWatchedFilms();
+    } else return;
   } else if (btn.classList.contains('queue_btn')) {
     lsService.setQueueToStorage();
     btn.classList.replace('queue_btn', 'del_queue');
@@ -117,6 +127,11 @@ refs.modalBackdrop.addEventListener('click', e => {
     lsService.delFromQueue();
     btn.classList.replace('del_queue', 'queue_btn');
     btn.textContent = 'Add to queue';
+    if (
+      document.querySelector('.navigation-list-item__button.active').textContent === 'My library'
+    ) {
+      showQueue();
+    } else return;
   }
 });
 

@@ -56,7 +56,7 @@ export function getModifiedData(data) {
 
     return m;
   });
-  console.log(modifiedData);
+
   return modifiedData;
 }
 

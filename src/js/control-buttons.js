@@ -29,7 +29,7 @@ export default function changeButtonsColor() {
   });
 }
 
-function showWatchedFilms() {
+export function showWatchedFilms() {
   let array = lsService.getFromWatchedLS();
   if (!array || array.length === 0) {
     // Если LS пуст то рисуем заглушку и прячем пагинацию
@@ -39,12 +39,12 @@ function showWatchedFilms() {
   }
 
   paginationContainer.classList.remove('visually-hidden');
-  console.log(array);
+
   renderMovieMarkup(template, getPortionData(array, 20, 1)); //рендерим первую страницу фильмов
   lsPagination(array); //добавляем пагинацию
 }
 
-function showQueue() {
+export function showQueue() {
   let array = lsService.getQueueLS();
   if (!array || array.length === 0) {
     // Если LS пуст то рисуем заглушку и прячем пагинацию
