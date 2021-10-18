@@ -43,16 +43,20 @@ export function getModifiedData(data) {
     if (m.release_date) {
       m.release_date = m.release_date.slice(0, 4);
     }
+    if (m.vote_average === 0) {
+      m.vote_average = false;
+      // m.rating_color = 'red-rating-cl';
+    } else {
+      if (m.vote_average <= 3) m.rating_color = 'red-rating-cl';
+      if (m.vote_average > 3 && m.vote_average <= 5) m.rating_color = 'yellow-rating-cl';
+      if (m.vote_average > 5 && m.vote_average <= 8) m.rating_color = 'yellow-green-rating-cl';
+      if (m.vote_average > 8) m.rating_color = 'green-rating-cl';
+      m.vote_average = pad(m.vote_average);
+    }
 
-    if (m.vote_average <= 3) m.rating_color = 'red-rating-cl';
-    if (m.vote_average > 3 && m.vote_average <= 5) m.rating_color = 'yellow-rating-cl';
-    if (m.vote_average > 5 && m.vote_average <= 8) m.rating_color = 'yellow-green-rating-cl';
-    if (m.vote_average > 8) m.rating_color = 'green-rating-cl';
-
-    m.vote_average = pad(m.vote_average);
     return m;
   });
-
+  console.log(modifiedData);
   return modifiedData;
 }
 
@@ -69,7 +73,18 @@ export function getModifiedDataLS(data) {
   } else {
     data.first_air_date = data.first_air_date.slice(0, 4);
   }
-  data.vote_average = pad(data.vote_average);
-  console.log(data);
+
+  if (data.vote_average === 0) {
+    data.vote_average = false;
+    // data.rating_color = 'red-rating-cl';
+  } else {
+    if (data.vote_average <= 3) data.rating_color = 'red-rating-cl';
+    if (data.vote_average > 3 && data.vote_average <= 5) data.rating_color = 'yellow-rating-cl';
+    if (data.vote_average > 5 && data.vote_average <= 8)
+      data.rating_color = 'yellow-green-rating-cl';
+    if (data.vote_average > 8) data.rating_color = 'green-rating-cl';
+    data.vote_average = pad(data.vote_average);
+  }
+
   return data;
 }

@@ -26,6 +26,12 @@ function renderTrendy() {
       if (movie.vote_average > 5 && movie.vote_average <= 8)
         movie.rating_color = 'yellow-green-rating-cl';
       if (movie.vote_average > 8) movie.rating_color = 'green-rating-cl';
+  
+  if (Number(movie.vote_average) === 0) {
+        movie.vote_average = false;
+      } else {
+        movie.vote_average = movie.vote_average.toFixed(1);
+      }
     });
 
     renderSliderFilms(d.results);

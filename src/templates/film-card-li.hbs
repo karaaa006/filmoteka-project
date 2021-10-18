@@ -23,10 +23,14 @@
     {{#if release_date}}<span class="movie-date">{{release_date}}</span>
       {{else}}<span class="movie-date">----</span>
     {{/if}}
-    <span class="movie-rating {{rating_color}}">{{vote_average}}</span>
+    
+    {{#if vote_average}}<span class="movie-rating {{rating_color}}">{{vote_average}}</span>
+      {{else}}<span class="movie-rating {{rating_color}}">-</span>
+    {{/if}}
   </p>
  
 </div>
 <div class="lds-ellipsis non-active"><div></div><div></div><div></div>
 </li>
 {{/each}}
+
