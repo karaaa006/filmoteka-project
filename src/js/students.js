@@ -13,15 +13,30 @@ const instance = basicLightbox.create(markupStudentsModal);
 
 refs.studentGoit.addEventListener('click', onOpenModal);
 
-function onOpenModal(e) {
+function onOpenModal() {
   instance.show();
+  document.body.style.overflow = 'hidden';
+  window.addEventListener('keydown', closeModal);
+  window.addEventListener('click', closeModal);
 
-  window.addEventListener('keydown', onCloseModal);
+}
 
-  function onCloseModal(event) {
-    if (event.code === 'Escape') {
-      instance.close();
-      window.removeEventListener('keydown', onCloseModal);
-    }
+function removeEventListeners () {
+  window.removeEventListener('click', closeModal);
+  window.removeEventListener('keydown', closeModal);
+}
+
+function closeModal (event) {
+  if (event.code === 'Escape' || event.target.classList.contains('basicLightbox')) {
+  instance.close();
+  document.body.style.overflow = '';    
+  removeEventListeners();
   }
 }
+
+
+
+
+
+
+
