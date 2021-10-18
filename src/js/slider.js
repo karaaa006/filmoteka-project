@@ -18,7 +18,15 @@ glide.mount();
 const api = new movieApi();
 
 function renderTrendy() {
-  api.getUpcomingMovies().then(d => renderSliderFilms(d.results));
+  api.getUpcomingMovies().then(d => {
+
+      if (d.vote_average <= 3) d.rating_color = 'red-rating-cl';
+      if (d.vote_average > 3 && d.vote_average <= 5) d.rating_color = 'yellow-rating-cl';
+      if (d.vote_average > 5 && d.vote_average <= 8) d.rating_color = 'yellow-green-rating-cl';
+      if (d.vote_average > 8) d.rating_color = 'green-rating-cl';
+    
+    renderSliderFilms(d.results);
+  });
 }
 renderTrendy();
 
