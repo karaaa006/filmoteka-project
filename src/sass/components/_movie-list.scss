@@ -5,7 +5,9 @@
   display: flex;
   flex-wrap: wrap;
 
-  justify-content: center;
+  @include from-none-to-tablet {
+    justify-content: center;
+  }
 }
 
 .movie-list__card {
