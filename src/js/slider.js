@@ -16,18 +16,18 @@ const glide = new Glide('.glide', {
 
 glide.mount();
 const api = new movieApi();
-sliderContainer.addEventListener('click', e => {
-  if (e.target.nodeName !== 'BUTTON') return;
-
-  const id = e.target.dataset.id;
-
-  api.getMovieInfo(id).then(d => console.log(d));
-});
 
 function renderTrendy() {
   api.getUpcomingMovies().then(d => {
-    d.results.map(movie => {
-      if (Number(movie.vote_average) === 0) {
+    d.results.forEach(movie => {
+      if (movie.vote_average <= 3) movie.rating_color = 'red-rating-cl';
+      if (movie.vote_average > 3 && movie.vote_average <= 5)
+        movie.rating_color = 'yellow-rating-cl';
+      if (movie.vote_average > 5 && movie.vote_average <= 8)
+        movie.rating_color = 'yellow-green-rating-cl';
+      if (movie.vote_average > 8) movie.rating_color = 'green-rating-cl';
+  
+  if (Number(movie.vote_average) === 0) {
         movie.vote_average = false;
       } else {
         movie.vote_average = movie.vote_average.toFixed(1);

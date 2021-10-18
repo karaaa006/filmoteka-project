@@ -58,6 +58,11 @@ export default {
 
     function displayContent(currentPage) {
       renderMovieMarkup(template, getPortionData(movieList, 20, currentPage));
+
+      window.scrollTo({
+        top: movieListRef.offsetTop,
+        behavior: 'smooth',
+      });
     }
 
     const pagesContainerRef = document.querySelector('.pagination span');

@@ -141,4 +141,15 @@ export default class FetchApi {
       console.log(err);
     }
   }
+
+  async getTrailerLink(id) {
+    try {
+      const response = await instance.get(`/movie/${id}/videos`);
+      const link = response.data.results[0].key;
+
+      return link;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 }
