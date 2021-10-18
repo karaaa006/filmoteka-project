@@ -19,12 +19,15 @@ const api = new movieApi();
 
 function renderTrendy() {
   api.getUpcomingMovies().then(d => {
+    d.results.forEach(movie => {
+      if (movie.vote_average <= 3) movie.rating_color = 'red-rating-cl';
+      if (movie.vote_average > 3 && movie.vote_average <= 5)
+        movie.rating_color = 'yellow-rating-cl';
+      if (movie.vote_average > 5 && movie.vote_average <= 8)
+        movie.rating_color = 'yellow-green-rating-cl';
+      if (movie.vote_average > 8) movie.rating_color = 'green-rating-cl';
+    });
 
-      if (d.vote_average <= 3) d.rating_color = 'red-rating-cl';
-      if (d.vote_average > 3 && d.vote_average <= 5) d.rating_color = 'yellow-rating-cl';
-      if (d.vote_average > 5 && d.vote_average <= 8) d.rating_color = 'yellow-green-rating-cl';
-      if (d.vote_average > 8) d.rating_color = 'green-rating-cl';
-    
     renderSliderFilms(d.results);
   });
 }
