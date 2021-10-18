@@ -84,10 +84,13 @@ function onFilmClick(e) {
       if (queueArray.some(movie => movie.id === d.id)) d.queue = true;
     }
 
-    if (d.vote_average <= 3) d.rating_color = 'red-rating-cl';
-    if (d.vote_average > 3 && d.vote_average <= 5) d.rating_color = 'yellow-rating-cl';
-    if (d.vote_average > 5 && d.vote_average <= 8) d.rating_color = 'yellow-green-rating-cl';
-    if (d.vote_average > 8) d.rating_color = 'green-rating-cl';
+    if (d.vote_average !== 0) {
+      if (d.vote_average <= 3) d.rating_color = 'red-rating-cl';
+      if (d.vote_average > 3 && d.vote_average <= 5) d.rating_color = 'yellow-rating-cl';
+      if (d.vote_average > 5 && d.vote_average <= 8) d.rating_color = 'yellow-green-rating-cl';
+      if (d.vote_average > 8) d.rating_color = 'green-rating-cl';
+      d.vote_average = d.vote_average.toFixed(1);
+    }
 
     renderMovieMarckup(d);
     removeSpinner();
