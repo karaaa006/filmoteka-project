@@ -58,7 +58,6 @@ function pleaseGoFetch(movieName) {
   const query = new FetchApi();
   const queryAnsver = query.searchMovies(movieName);
     queryAnsver.then(movieList => {
-      console.dir(movieList)
       inputLikeGoogle(movieList.results)
   });
 }
