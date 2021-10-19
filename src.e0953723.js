@@ -139,4 +139,4 @@ var e,n=arguments[3];!function(t){"object"==typeof exports&&"undefined"!=typeof 
 },{"./movie_Api":"ccOE","basiclightbox":"BNjD"}],"Focm":[function(require,module,exports) {
 "use strict";require("./js/slider"),require("./sass/main.scss"),require("basiclightbox/dist/basicLightbox.min.css"),require("./js/storage"),require("./js/renderMovieModal"),require("./js/nav-buttons"),require("./js/getPopularMovies.js"),require("./js/students");var e=r(require("./js/movie_Api"));function r(e){return e&&e.__esModule?e:{default:e}}require("./js/treiler"),require("./js/paginationButtons");const s=new e.default;console.log(s.getTrailerLink(11));
 },{"./js/slider":"wzuc","./sass/main.scss":"clu1","basiclightbox/dist/basicLightbox.min.css":"IwtM","./js/storage":"qhja","./js/renderMovieModal":"GXRB","./js/nav-buttons":"FKU9","./js/getPopularMovies.js":"cCjI","./js/students":"anyE","./js/movie_Api":"ccOE","./js/treiler":"XKTU","./js/paginationButtons":"v5Ju"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka-project/src.103059ec.js.map
+//# sourceMappingURL=/filmoteka-project/src.e0953723.js.map
