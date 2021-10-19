@@ -243,8 +243,8 @@
   border-radius: 0 0 5px 5px;
   overflow: hidden;
   flex-wrap: wrap;
-  flex-direction: column;
-  bottom: -57px;
+  flex-direction: column-reverse;
+  // bottom: -56px;
 }
 
 .search-results__item {

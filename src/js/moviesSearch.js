@@ -12,8 +12,8 @@ export let findedMovies = [];
 
 export function movieSearch() {
   const input = document.querySelector('.header-input');
-  const searchResults = document.querySelector('.search-results');
-  input.addEventListener('input', debounce(inputHandler, 500));
+  input.addEventListener('input', debounce(inputHandler, 250));
+  input.addEventListener('submit', fetchBySubmit)
 }
 
 async function inputHandler(event) {
@@ -25,13 +25,6 @@ async function inputHandler(event) {
     getPopularMovies();
     return;
   }
-  window.addEventListener('keydown', (e) => {
-    if (e.code === 'Enter') {
-      searchResults.innerHTML = '';
-      fetchMovies(event.target.value);
-    }
-    return
-  })
   pleaseGoFetch(event.target.value)
 }
 
@@ -46,19 +39,34 @@ export function fetchMovies(moviesName) {
       apiPagination(movieList, query);
       return;
     }
-    const searchResults = document.querySelector('.search-results');
-    searchResults.innerHTML = '';
-    notification.textContent =
-      'Search result not successful. Enter the correct movie name and try again';
-  });
+    renderNotification()
+   });
 }
 
-
 function pleaseGoFetch(movieName) {
+  const notification = document.querySelector('.notification');
+  notification.textContent = '';
   const query = new FetchApi();
   const queryAnsver = query.searchMovies(movieName);
     queryAnsver.then(movieList => {
+      if (movieList.total_results === 0){
+        renderNotification()
+        return
+      }
       inputLikeGoogle(movieList.results)
   });
+}
+
+function fetchBySubmit(event){
+  event.preventDefault()
+  // console.log(event)
+}
+
+function renderNotification(){
+  const notification = document.querySelector('.notification');
+  const searchResults = document.querySelector('.search-results');
+    searchResults.innerHTML = '';
+    notification.textContent =
+      'Search result not successful. Enter the correct movie name and try again';
 }
 

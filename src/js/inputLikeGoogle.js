@@ -10,11 +10,15 @@ export default function inputLikeGoogle(query) {
   const searchResults = document.querySelector('.search-results');
   searchResults.innerHTML = '';
   const movieList = [];
-
-  for (let i = 0; i < 4; i++) {
+  let queryLength = 4
+  if (query.length < 4){
+    queryLength = query.length
+  }
+  for (let i = 0; i < queryLength; i++) {
     movieList.push(`<p class="search-results__item">${query[i].title}</p>`);
   }
-
+  const bottom = -14*queryLength
+  searchResults.style.bottom = `${bottom}px`
   searchResults.insertAdjacentHTML('beforeend', movieList.join(''));
   searchResults.addEventListener('click', showFilm);
 }
