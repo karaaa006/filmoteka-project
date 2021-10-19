@@ -172,7 +172,6 @@
 }
 
 .header-input {
-  position: relative;
   display: inline-block;
   margin-left: auto;
   margin-right: auto;
@@ -243,8 +242,9 @@
   border-radius: 0 0 5px 5px;
   overflow: hidden;
   flex-wrap: wrap;
-  flex-direction: column-reverse;
-  // bottom: -56px;
+  flex-direction: column;
+  margin-top: 2px;
+  // bottom: -2px;
 }
 
 .search-results__item {
@@ -275,3 +275,5 @@
   color: #000000;
   cursor: pointer;
 }
+
+

@@ -17,9 +17,8 @@ export default function inputLikeGoogle(query) {
   for (let i = 0; i < queryLength; i++) {
     movieList.push(`<p class="search-results__item">${query[i].title}</p>`);
   }
-  const bottom = -14*queryLength
-  searchResults.style.bottom = `${bottom}px`
-  searchResults.insertAdjacentHTML('beforeend', movieList.join(''));
+ console.log(movieList)
+  searchResults.insertAdjacentHTML('beforeend', movieList.join(''));  
   searchResults.addEventListener('click', showFilm);
 }
 
