@@ -14,15 +14,36 @@ async function renderTrailerModal(id) {
         height="720"
         src="https://www.youtube.com/embed/${trailerLink}"
         title="YouTube video player"
+        disablekb="1"
         frameborder="0"
+        
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>;
     `;
     const lightbox = basicLightbox.create(iframe);
+
+    
     lightbox.show();
-    console.log(trailerLink);
-  } catch (err) {
+    document.body.style.overflow = 'hidden';
+    
+    window.addEventListener('keydown', closeModal)
+    window.addEventListener('click', closeModal)
+
+    function closeModal (e) {  
+      console.log(e.code)   
+      console.log(e.target)
+      if (e.code === 'Escape' || e.target.classList.contains('basicLightbox')) {
+            
+      lightbox.close()
+      document.body.style.overflow = '';    
+      window.removeEventListener('click', closeModal);
+      window.removeEventListener('keydown', closeModal);
+      }
+    }
+ 
+
+  }catch (err) {
     console.log(err);
   }
 }
@@ -34,3 +55,18 @@ sliderContainer.addEventListener('click', e => {
   console.log(movieId);
   renderTrailerModal(movieId);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
