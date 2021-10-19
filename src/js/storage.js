@@ -94,7 +94,6 @@ export default class LSService {
   getFromWatchedLS() {
     try {
       const movieArr = JSON.parse(localStorage.getItem('Watched'));
-
       return movieArr === null ? undefined : movieArr;
     } catch (err) {
       console.error('Get state error: ', err);

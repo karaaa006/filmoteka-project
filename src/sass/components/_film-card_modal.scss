@@ -85,11 +85,13 @@
 
   @include for-tablet {
     max-width: 264px;
+    width: 264px;
     margin-right: 30px;
     margin-bottom: 0;
   }
   @include for-desktop {
     max-width: 396px;
+    width: 396px;
   }
 }
 
