@@ -13,7 +13,6 @@
 .movie-list__card {
   position: relative;
   margin-bottom: 20px;
-  max-width: 293px;
   padding: 10px;
   border-radius: 5px;
   max-height: 100%;
@@ -56,13 +55,19 @@
 
 .card-img__thumb {
   margin-bottom: 10px;
+  height: 375px;
   border-radius: 5px;
+
   overflow: hidden;
 }
 
 .movie-img {
+  max-width: 274px;
+  max-height: 375px;
+  border-radius: 5px;
+  object-fit: cover;
+
   transition: transform $transition-style 250ms, filter $transition-style 250ms;
-  height: 400px;
 }
 
 .line {
