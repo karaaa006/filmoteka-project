@@ -13,7 +13,7 @@ export let findedMovies = [];
 export function movieSearch() {
   const input = document.querySelector('.header-input');
   input.addEventListener('input', debounce(inputHandler, 250));
-  input.addEventListener('submit', fetchBySubmit)
+  input.addEventListener('keydown', fetchBySubmit)
 }
 
 async function inputHandler(event) {
@@ -26,7 +26,6 @@ async function inputHandler(event) {
     return;
   }
   pleaseGoFetch(event.target.value)
-  // window.addEventListener('keydown', fetchBySubmit)
 }
 
 export function fetchMovies(moviesName) {
@@ -59,8 +58,15 @@ function pleaseGoFetch(movieName) {
 }
 
 function fetchBySubmit(event){
-  event.preventDefault()
-  console.log(event)
+  if (event.code !== 'Enter'){
+    return
+  } else if (event.target.value.length === 0){
+    return
+  }
+  const input = document.querySelector('.header-input');
+  fetchMovies(event.target.value)
+  const searchResults = document.querySelector('.search-results');
+  searchResults.innerHTML = '';
 }
 
 function renderNotification(){
