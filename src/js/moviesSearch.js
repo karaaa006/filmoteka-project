@@ -3,34 +3,77 @@ import FetchApi from './movie_Api';
 import template from '../templates/film-card-li.hbs';
 import pagination from './paginationButtons';
 import { getModifiedData } from './getModifiedData.js';
+import getPopularMovies from './getPopularMovies';
+import inputLikeGoogle from './inputLikeGoogle';
 
 const { apiPagination } = pagination;
 const debounce = require('lodash.debounce');
+export let findedMovies = [];
 
-export default function movieSearch() {
+export function movieSearch() {
   const input = document.querySelector('.header-input');
-  input.addEventListener('input', debounce(inputHandler, 500));
+  input.addEventListener('input', debounce(inputHandler, 250));
+  input.addEventListener('keydown', fetchBySubmit)
 }
 
-function inputHandler(event) {
+async function inputHandler(event) {
   const notification = document.querySelector('.notification');
+  const searchResults = document.querySelector('.search-results');
   if (event.target.value.length === 0) {
     notification.textContent = '';
+    searchResults.innerHTML = '';
+    getPopularMovies();
     return;
   }
+  pleaseGoFetch(event.target.value)
+}
+
+export function fetchMovies(moviesName) {
+  const notification = document.querySelector('.notification');
+  notification.textContent = '';
   const query = new FetchApi();
-  const queryAnsver = query.searchMovies(event.target.value);
+  const queryAnsver = query.searchMovies(moviesName);
   queryAnsver.then(movieList => {
     if (movieList.total_results !== 0) {
-      console.log(movieList);
       renderMovieMarkup(template, getModifiedData(movieList));
       apiPagination(movieList, query);
-      notification.classList.add('success');
-      notification.textContent = `Find ${movieList.total_results} results!`;
       return;
     }
-    notification.classList.remove('success');
-    notification.textContent =
-      'Search result not successful. Enter the correct movie name and try again';
+    renderNotification()
+   });
+}
+
+function pleaseGoFetch(movieName) {
+  const notification = document.querySelector('.notification');
+  notification.textContent = '';
+  const query = new FetchApi();
+  const queryAnsver = query.searchMovies(movieName);
+    queryAnsver.then(movieList => {
+      if (movieList.total_results === 0){
+        renderNotification()
+        return
+      }
+      inputLikeGoogle(movieList.results)
   });
 }
+
+function fetchBySubmit(event){
+  if (event.code !== 'Enter'){
+    return
+  } else if (event.target.value.length === 0){
+    return
+  }
+  const input = document.querySelector('.header-input');
+  fetchMovies(event.target.value)
+  const searchResults = document.querySelector('.search-results');
+  searchResults.innerHTML = '';
+}
+
+function renderNotification(){
+  const notification = document.querySelector('.notification');
+  const searchResults = document.querySelector('.search-results');
+    searchResults.innerHTML = '';
+    notification.textContent =
+      'Search result not successful. Enter the correct movie name and try again';
+}
+
