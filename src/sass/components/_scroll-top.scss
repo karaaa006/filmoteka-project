@@ -1,0 +1,27 @@
+.scroll-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+
+  border-radius: 50px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  opacity: 1;
+  cursor: pointer;
+
+  visibility: visible;
+  transition: background-color $transition-style 250ms, opacity $transition-style 250ms,
+    visibility $transition-style 250ms;
+  &:hover,
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.25);
+  }
+}
+
+.scroll-top.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
