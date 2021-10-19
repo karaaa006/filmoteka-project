@@ -4,12 +4,12 @@
         <p class="movie-name-slider">
             {{title}}
         <button class="trailer-btn" >
-            <img src="https://img.icons8.com/color/30/000000/youtube-play.png"/>
+            <img src="https://raw.githubusercontent.com/karaaa006/filmoteka-project/375385fb47c596b50883c509eb00fe2281ad2939/src/images/icons-play-button-2.svg"/>
         </button>
 
         </p>
         <img class="slider-image" src="https://image.tmdb.org/t/p/w500{{poster_path}}" alt="{{title}} {{name}}"
-            onerror="this.onerror=null;this.src='https://ik.imagekit.io/tc8jxffbcvf/default-movie-portrait_EmJUj9Tda5wa.jpg?tr=fo-auto,di-';" />
+            onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/karaaa006/filmoteka-project/main/src/images/no-poster.png';" />
         {{#if vote_average}}
           <span class='rating-slider {{rating_color}}'>{{vote_average}}</span>
         {{else}}<span class='rating-slider'>-</span>
