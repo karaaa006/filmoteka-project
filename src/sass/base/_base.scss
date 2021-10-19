@@ -4,6 +4,10 @@ body {
   line-height: 1.33;
   color: $text-cl;
   background-color: $page-bg-cl;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 
 img {

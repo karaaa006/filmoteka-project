@@ -7,7 +7,7 @@ import { renderMovieMarkup } from './renderMovieMarkup';
 import template from '../templates/film-card-li.hbs';
 import getPortionData from './getPortionData';
 
-const { paginationContainerRef } = refs;
+const { paginationContainerRef, movieListRef } = refs;
 
 export default {
   apiPagination: function (movieList, movieApi) {
@@ -24,6 +24,11 @@ export default {
       movieApi
         .selectPage(currentPage)
         .then(movieList => renderMovieMarkup(template, getModifiedData(movieList)));
+
+      window.scrollTo({
+        top: movieListRef.offsetTop,
+        behavior: 'smooth',
+      });
     }
 
     const pagesContainerRef = document.querySelector('.pagination span');
@@ -53,6 +58,11 @@ export default {
 
     function displayContent(currentPage) {
       renderMovieMarkup(template, getPortionData(movieList, 20, currentPage));
+
+      window.scrollTo({
+        top: movieListRef.offsetTop,
+        behavior: 'smooth',
+      });
     }
 
     const pagesContainerRef = document.querySelector('.pagination span');

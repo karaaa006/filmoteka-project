@@ -200,12 +200,12 @@
 
 .search-svg {
   position: absolute;
-  top: 45px;
+  top: 42px;
   display: inline-block;
-  left: 268px;
+  left: 264px;
 
   @include for-tablet {
-    left: 324px;
+    left: 320px;
   }
 }
 

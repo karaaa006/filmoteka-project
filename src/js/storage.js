@@ -1,7 +1,6 @@
 import FetchApi from './movie_Api';
 const fetchApi = new FetchApi();
 
-import { getModifiedData } from './getModifiedData';
 import { getModifiedDataLS } from './getModifiedData';
 
 export default class LSService {
@@ -19,8 +18,7 @@ export default class LSService {
     } else {
       this.queueArray = [];
     }
-    // this.watchedArray = [];
-    // this.queueArray = [];
+
     this.id = 0;
   }
 
@@ -96,7 +94,6 @@ export default class LSService {
   getFromWatchedLS() {
     try {
       const movieArr = JSON.parse(localStorage.getItem('Watched'));
-
       return movieArr === null ? undefined : movieArr;
     } catch (err) {
       console.error('Get state error: ', err);
@@ -113,26 +110,3 @@ export default class LSService {
     }
   }
 }
-
-// console.log(id, poster_path, title, name, genre_ids, release_date, first_air_date, vote_average);
-
-// const {
-//   id,
-//   poster_path,
-//   title,
-//   name,
-//   genres: { genre_ids },
-//   release_date,
-//   first_air_date,
-//   vote_average,
-// } = info;
-// console.log(
-//   `id:${id}`,
-//   `poster_path: ${poster_path}`,
-//   `title: ${title}`,
-//   `name: ${name}`,
-//   `genre_ids: ${genre_ids}`,
-//   `release_date: ${release_date}`,
-//   `first_air_date: ${first_air_date}`,
-//   `vote_average: ${vote_average}`,
-// );
