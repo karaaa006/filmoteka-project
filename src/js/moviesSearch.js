@@ -12,8 +12,9 @@ export let findedMovies = [];
 
 export function movieSearch() {
   const input = document.querySelector('.header-input');
+  const form = document.querySelector('.form')
   input.addEventListener('input', debounce(inputHandler, 250));
-  input.addEventListener('keydown', fetchBySubmit)
+  form.addEventListener('submit', fetchBySubmit)
 }
 
 async function inputHandler(event) {
@@ -58,13 +59,10 @@ function pleaseGoFetch(movieName) {
 }
 
 function fetchBySubmit(event){
-  if (event.code !== 'Enter'){
-    return
-  } else if (event.target.value.length === 0){
-    return
-  }
+  event.preventDefault()
   const input = document.querySelector('.header-input');
-  fetchMovies(event.target.value)
+  console.log(input.value)
+  fetchMovies(input.value)
   const searchResults = document.querySelector('.search-results');
   searchResults.innerHTML = '';
 }
