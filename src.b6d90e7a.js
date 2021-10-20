@@ -141,4 +141,4 @@ const o=document.querySelector(".scroll-top");function c(){document.body.scrollT
 },{}],"Focm":[function(require,module,exports) {
 "use strict";require("./js/slider"),require("./sass/main.scss"),require("basiclightbox/dist/basicLightbox.min.css"),require("./js/storage"),require("./js/renderMovieModal"),require("./js/nav-buttons"),require("./js/getPopularMovies.js"),require("./js/students"),require("./js/trailer"),require("./js/paginationButtons"),require("./js/scrollTopBtn");
 },{"./js/slider":"wzuc","./sass/main.scss":"clu1","basiclightbox/dist/basicLightbox.min.css":"IwtM","./js/storage":"qhja","./js/renderMovieModal":"GXRB","./js/nav-buttons":"FKU9","./js/getPopularMovies.js":"cCjI","./js/students":"anyE","./js/trailer":"J7DG","./js/paginationButtons":"v5Ju","./js/scrollTopBtn":"Bu0n"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka-project/src.ccde8251.js.map
+//# sourceMappingURL=/filmoteka-project/src.b6d90e7a.js.map
