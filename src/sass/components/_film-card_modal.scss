@@ -8,17 +8,19 @@
 
   padding: 20px;
 
+  visibility: visible;
   opacity: 1;
-  transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 500ms $transition-style, visibility 500ms $transition-style;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
-.backdrop.visually-hidden {
+.backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
+  visibility: hidden;
 }
 
-.backdrop.visually-hidden .modal {
+.backdrop.is-hidden .modal {
   transform: translate(-50%, -50%) scale(0);
 }
 
@@ -30,7 +32,7 @@
   left: 50%;
 
   transform: translate(-50%, -50%) scale(1);
-  transition: transform 500mc cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 500ms $transition-style;
 
   padding: 50px 20px 40px;
   overflow: auto;
