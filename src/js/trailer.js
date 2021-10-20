@@ -23,27 +23,21 @@ async function renderTrailerModal(id) {
     `;
     const lightbox = basicLightbox.create(iframe);
 
-    
     lightbox.show();
     document.body.style.overflow = 'hidden';
-    
-    window.addEventListener('keydown', closeModal)
-    window.addEventListener('click', closeModal)
 
-    function closeModal (e) {  
-      console.log(e.code)   
-      console.log(e.target)
+    window.addEventListener('keydown', closeModal);
+    window.addEventListener('click', closeModal);
+
+    function closeModal(e) {
       if (e.code === 'Escape' || e.target.classList.contains('basicLightbox')) {
-            
-      lightbox.close()
-      document.body.style.overflow = '';    
-      window.removeEventListener('click', closeModal);
-      window.removeEventListener('keydown', closeModal);
+        lightbox.close();
+        document.body.style.overflow = '';
+        window.removeEventListener('click', closeModal);
+        window.removeEventListener('keydown', closeModal);
       }
     }
- 
-
-  }catch (err) {
+  } catch (err) {
     console.log(err);
   }
 }
@@ -52,21 +46,5 @@ sliderContainer.addEventListener('click', e => {
   if (e.target.nodeName !== 'IMG') return;
 
   const movieId = e.target.closest('li').dataset.id;
-  console.log(movieId);
   renderTrailerModal(movieId);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
