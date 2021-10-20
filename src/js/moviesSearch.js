@@ -12,8 +12,19 @@ export let findedMovies = [];
 
 export function movieSearch() {
   const input = document.querySelector('.header-input');
+  const form = document.querySelector('.form')
   input.addEventListener('input', debounce(inputHandler, 250));
-  input.addEventListener('keydown', fetchBySubmit)
+  form.addEventListener('submit', fetchBySubmit)
+  if (window.innerWidth < 1024){
+    window.addEventListener('click', (e) => {
+      const searchResults = document.querySelector('.search-results')
+      if (e.target === input || e.target === searchResults){
+        return
+      }
+      fetchOnMobileDevices()
+    })
+  }
+
 }
 
 async function inputHandler(event) {
@@ -58,13 +69,9 @@ function pleaseGoFetch(movieName) {
 }
 
 function fetchBySubmit(event){
-  if (event.code !== 'Enter'){
-    return
-  } else if (event.target.value.length === 0){
-    return
-  }
+  event.preventDefault()
   const input = document.querySelector('.header-input');
-  fetchMovies(event.target.value)
+  fetchMovies(input.value)
   const searchResults = document.querySelector('.search-results');
   searchResults.innerHTML = '';
 }
@@ -75,5 +82,15 @@ function renderNotification(){
     searchResults.innerHTML = '';
     notification.textContent =
       'Search result not successful. Enter the correct movie name and try again';
+}
+
+function fetchOnMobileDevices(){
+  const input = document.querySelector('.header-input');
+  if (input.value.length === 0){
+    return
+  }
+  fetchMovies(input.value)
+  const searchResults = document.querySelector('.search-results');
+  searchResults.innerHTML = '';
 }
 
