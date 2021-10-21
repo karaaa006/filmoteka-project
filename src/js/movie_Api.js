@@ -9,6 +9,11 @@ instance.defaults.params = { api_key: 'c4da2d26df740b651b6bb4b7cba32696', langua
 export default class FetchApi {
   constructor() {
     this.currentPage = 1;
+    let url = new URL(window.location.href);
+    if (url.searchParams.get('page')) {
+      this.currentPage = Number(url.searchParams.get('page'));
+    }
+
     this.maxPage = 0;
     this.currentQuery = '';
     this.currentRequest = '';
@@ -35,6 +40,9 @@ export default class FetchApi {
   }
 
   async selectPage(page) {
+    let searchParams = await new URLSearchParams(window.location.search);
+    searchParams.set('page', page);
+    window.location.search = searchParams.toString();
     try {
       this.currentPage = page;
       if (this.currentRequest === 'search') {
@@ -103,9 +111,12 @@ export default class FetchApi {
   }
 
   async getPopularMovies() {
+    this.currentPage = 1;
+    let url = new URL(window.location.href);
+    if (url.searchParams.get('page')) {
+      this.currentPage = Number(url.searchParams.get('page'));
+    }
     try {
-      this.currentPage = 1;
-
       const response = await instance.get(`/movie/popular?page=${this.currentPage}`);
       const moviesList = response.data;
 
