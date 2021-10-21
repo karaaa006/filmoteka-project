@@ -117,9 +117,7 @@ refs.modalBackdrop.addEventListener('click', e => {
     btn.classList.replace('del_watched', 'watched_btn');
     btn.textContent = 'Add to watched';
 
-    if (
-      document.querySelector('.navigation-list-item__button.active').textContent === 'My library'
-    ) {
+    if (document.querySelector('#watched.active')) {
       showWatchedFilms();
     } else return;
   } else if (btn.classList.contains('queue_btn')) {
@@ -130,9 +128,8 @@ refs.modalBackdrop.addEventListener('click', e => {
     lsService.delFromQueue();
     btn.classList.replace('del_queue', 'queue_btn');
     btn.textContent = 'Add to queue';
-    if (
-      document.querySelector('.navigation-list-item__button.active').textContent === 'My library'
-    ) {
+
+    if (document.querySelector('#queue.active')) {
       showQueue();
     } else return;
   }
